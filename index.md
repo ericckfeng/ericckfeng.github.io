@@ -6,7 +6,7 @@ title: 歡迎來到 J.K. Feng 的數位花園
 ## 🌿 關於這座花園 (About the Garden)
 > 「我們在程式碼中定義規則，在潛意識中尋找自由。」
 
-我是 **馮建凱 (J.K. Feng)**。這是我全方位的生活與創作空間。作為一名電機與資訊背景的技術人員，我持續學習新知並在工作中實踐；作為一名身心靈科學愛好者，我持續的在探尋人類靈魂的深度。
+我是 **馮建凱 (J.K. Feng)**。這是我全方位的生活與創作空間。作為一名電機與資訊背景的技術人員，我持續學習新知並在工作中實踐；作為一名身心靈科學愛好者，我探索人類意識的無限可能。
 
 ---
 
@@ -55,6 +55,29 @@ title: 歡迎來到 J.K. Feng 的數位花園
 | 2019 | Food calorie and nutrition analysis system based on mask r-cnn | **IEEE ICCC** |
 | 2018 | Forward vehicle deceleration detection system for motorcycle at nighttime | **IEEE ICCC** |
 | 2018 | A vision-based human action recognition system for companion robots | **IEEE ICCC** |
+
+---
+
+## 🛠️ 開源專案 (Open Source Projects)
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+  <div style="flex: 1; min-width: 280px; border: 2px solid #28a745; padding: 15px; border-radius: 8px; background-color: #f6f8fa;">
+    <h4>🌟 <a href="https://github.com/ericckfeng/ziwei-astrology-tool">紫微斗數命盤工具</a></h4>
+    <p><small>Ziwei Astrology Tool</small></p>
+    <p>研究紫微斗數用萬用命盤產生工具。結合傳統命理與現代程式設計，快速生成個人命盤分析。</p>
+    <p><strong>🔧 技術：</strong> HTML, JavaScript</p>
+    <p><a href="https://github.com/ericckfeng/ziwei-astrology-tool" style="color: #0366d6;">📖 查看專案</a></p>
+  </div>
+
+  <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px; background-color: #f6f8fa;">
+    <h4>📖 <a href="https://github.com/ericckfeng/JIN999">靜語創作空間</a></h4>
+    <p><small>Creative & Literary Space</small></p>
+    <p>文學創作與思想記錄的個人空間。記錄生活感悟與創意火花。</p>
+    <p><a href="https://github.com/ericckfeng/JIN999" style="color: #0366d6;">📖 查看專案</a></p>
+  </div>
+
+</div>
 
 ---
 
