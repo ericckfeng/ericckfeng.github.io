@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: default
 title: 歡迎來到 J.K. Feng 的數位花園
 ---
 
