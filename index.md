@@ -50,7 +50,7 @@ title: 歡迎來到 J.K. Feng 的數位花園
 
 ## 📚 精選論文 (Featured Publications)
 
-| 年份 | 論文標題 (Research Title) | 發佈渠道 |
+| 年份 | 論文標題 (Research Title) | 發表地點 |
 |:---|:---|:---|
 | 2019 | Food calorie and nutrition analysis system based on mask r-cnn | **IEEE ICCC** |
 | 2018 | Forward vehicle deceleration detection system for motorcycle at nighttime | **IEEE ICCC** |
