@@ -70,13 +70,6 @@ title: 歡迎來到 J.K. Feng 的數位花園
     <p><a href="https://github.com/ericckfeng/ziwei-astrology-tool" style="color: #0366d6;">📖 查看專案</a></p>
   </div>
 
-  <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px; background-color: #f6f8fa;">
-    <h4>📖 <a href="https://github.com/ericckfeng/JIN999">靜語創作空間</a></h4>
-    <p><small>Creative & Literary Space</small></p>
-    <p>文學創作與思想記錄的個人空間。記錄生活感悟與創意火花。</p>
-    <p><a href="https://github.com/ericckfeng/JIN999" style="color: #0366d6;">📖 查看專案</a></p>
-  </div>
-
 </div>
 
 ---
