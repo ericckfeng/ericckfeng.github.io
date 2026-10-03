@@ -5,4 +5,4 @@ description: >-
   研究深度學習、電腦視覺與多代理人模擬，也寫一些解決日常問題的小工具。
 baseurl: ""
 url: "https://ericckfeng.github.io"
-theme: jekyll-theme-cayman
+exclude: [README.md]

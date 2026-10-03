@@ -1,0 +1,10 @@
+:root{
+  /* 本名（E）設計參數 v1.0（2026-10-03） */
+  --e-paper:#FFFFFF;  /* 白：底色 */
+  --e-ink:#222831;    /* 墨：內文 */
+  --e-wine:#7A2E3A;   /* 酒紅：標題、連結、重點 */
+  --e-stone:#6B7280;  /* 石灰：次要文字 */
+  --e-mist:#EEF0F2;   /* 淡灰：分隔線、區塊底 */
+  --e-serif:"Noto Serif TC","Songti TC",serif;                        /* 標題：思源宋體 */
+  --e-sans:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif; /* 內文：系統黑體 */
+}
