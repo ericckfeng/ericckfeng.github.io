@@ -1,8 +1,8 @@
-title: J.K. Feng's Digital Garden
+title: J.K. Feng
 email: ericckfeng@gmail.com
-description: >- # 這裡是您的核心定位
-  資工博士 | 長庚大學智慧運算學院技士 | 業餘身心靈科學愛好者 | 《第24諧波》作者。
-  在科技的理性與人文的感性間，探索意識與系統的交集。
-baseurl: "" 
+description: >-
+  資訊工程博士班｜電機與資訊背景的大學技術人員。
+  研究深度學習、電腦視覺與多代理人模擬，也寫一些解決日常問題的小工具。
+baseurl: ""
 url: "https://ericckfeng.github.io"
-theme: jekyll-theme-cayman # 建議使用具備現代感的 Cayman 或 Minima
+theme: jekyll-theme-cayman

@@ -1,46 +1,38 @@
 ---
 layout: default
-title: 歡迎來到 J.K. Feng 的數位花園
+title: J.K. Feng
 ---
 
-## 🌿 關於這座花園 (About the Garden)
-> 「我們在程式碼中定義規則，在潛意識中尋找自由。」
+## 👋 關於我 (About)
 
-我是 **馮建凱 (J.K. Feng)**。這是我全方位的生活與創作空間。作為一名電機與資訊背景的技術人員，我持續學習新知並在工作中實踐；作為一名身心靈科學愛好者，我探索人類意識的無限可能。
+我是 **馮建凱 (J.K. Feng)**，電機與資訊背景，長期在大學負責資訊系統、實驗室與研究設備的技術工作，目前就讀資訊工程博士班。
+
+我的工作和研究圍繞同一件事：**讓系統穩定、讓資料說話、讓工具真的被用起來。**
 
 ---
 
-## 🏛️ 三大知識板塊 (The Three Pillars)
+## 🔬 研究方向 (Research)
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
 
   <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px;">
-    <h3>💻 科技與學術</h3>
-    <p>專注於<strong>電腦視覺 (CV)</strong> 與 <strong>AI 智慧系統</strong>。目前任職於長庚大學智慧運算學院。</p>
+    <h3>🤖 深度學習與電腦視覺</h3>
+    <p>從深度學習走進 AI，研究影像理解、物件偵測與行為辨識；下面三篇論文都是這條線的成果。</p>
     <ul>
+      <li>Deep Learning</li>
       <li>Computer Vision & Image Understanding (CVIU)</li>
+      <li>Object Detection & Instance Segmentation</li>
+      <li>Human Action Recognition</li>
+    </ul>
+  </div>
+
+  <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px;">
+    <h3>🧬 多代理人模擬</h3>
+    <p>用網絡導向的多代理人模型（Agent-Based Modeling）模擬多病毒株流行病的動態，區分疫苗策略下的不同效應。</p>
+    <ul>
       <li>Multi-Agent Systems (MAS)</li>
       <li>Social Network Analysis (SNA)</li>
-    </ul>
-  </div>
-
-  <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px;">
-    <h3>🧘 心理與哲學</h3>
-    <p>探索人類意識的奧秘。結合<strong>心理諮商</strong>與<strong>東方命理</strong>的系統化分析。</p>
-    <ul>
-      <li>中國國家二級心理諮商師</li>
-      <li>NGH 國際催眠治療師</li>
-      <li>紫微斗數與姓名學研究</li>
-    </ul>
-  </div>
-
-  <div style="flex: 1; min-width: 280px; border: 1px solid #e1e4e8; padding: 15px; border-radius: 8px;">
-    <h3>🖋️ 文學與生活</h3>
-    <p>透過文字與音符記錄生命。正在和AI共同創作基於網路身心靈名著的<strong>玄幻小說</strong>。</p>
-    <ul>
-      <li>長篇小說《第24諧波》</li>
-      <li>Obsidian 數位知識管理</li>
-      <li>AI與人文生活應用</li>
+      <li>Epidemic Simulation</li>
     </ul>
   </div>
 
@@ -48,9 +40,9 @@ title: 歡迎來到 J.K. Feng 的數位花園
 
 ---
 
-## 📚 精選論文 (Featured Publications)
+## 📚 論文 (Publications)
 
-| 年份 | 論文標題 (Research Title) | 發表地點 |
+| 年份 | 論文標題 (Title) | 發表地點 |
 |:---|:---|:---|
 | 2019 | Food calorie and nutrition analysis system based on mask r-cnn | **IEEE ICCC** |
 | 2018 | Forward vehicle deceleration detection system for motorcycle at nighttime | **IEEE ICCC** |
@@ -58,29 +50,29 @@ title: 歡迎來到 J.K. Feng 的數位花園
 
 ---
 
-## 🛠️ 開源專案 (Open Source Projects)
+## 🛠️ 開源專案 (Open Source)
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px;">
 
   <div style="flex: 1; min-width: 280px; border: 2px solid #28a745; padding: 15px; border-radius: 8px; background-color: #f6f8fa;">
-    <h4>🌟 <a href="https://github.com/ericckfeng/ziwei-astrology-tool">紫微斗數命盤工具</a></h4>
-    <p><small>Ziwei Astrology Tool</small></p>
-    <p>研究紫微斗數用萬用命盤產生工具。結合傳統命理與現代程式設計，快速生成個人命盤分析。</p>
-    <p><strong>🔧 技術：</strong> HTML, JavaScript</p>
-    <p><a href="https://github.com/ericckfeng/ziwei-astrology-tool" style="color: #0366d6;">📖 查看專案</a></p>
+    <h4>📋 <a href="https://github.com/ericckfeng/DesktopTodo">DesktopTodo</a></h4>
+    <p><small>輕量桌面待辦工具</small></p>
+    <p>常駐桌面的待辦清單，資料存在本機；每天自動或手動結案，讓桌面保持清爽。</p>
+    <p><strong>🔧 技術：</strong> Python（Windows／macOS）</p>
+    <p><a href="https://github.com/ericckfeng/DesktopTodo" style="color: #0366d6;">📖 查看專案</a></p>
   </div>
 
 </div>
 
 ---
 
-## 🎬 最近的興趣軌跡 (Recent Activity)
-* **[創作]** 小說《第24諧波：大夢覺醒錄》與AI共同協作，基於網路上重要身心靈著作編寫的科幻小說目前正在持續寫作中..敬請期待。
-* **[學習]** 研究如何將 AI 代理 (Agent) 整合入日常自動化流程。
-* **[生活]** 老年學習練習電鋼琴，目的藉由電鋼琴把腦中音符輸出，再由AI協助完成音樂。
+## 🎬 最近在做的事 (Recent)
+* **[研究]** 多病毒株流行病模擬的論文撰寫中。
+* **[學習]** 研究如何把 AI 代理（Agent）整合進日常的自動化流程。
+* **[生活]** 練習電鋼琴，把腦中的音符彈出來，再請 AI 協助整理成曲子。
 
 ---
 
-## 📫 交流 (Connect)
+## 📫 聯絡 (Contact)
 [![GitHub](https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github)](https://github.com/ericckfeng)
-[![Email](https://img.shields.io/badge/Email-Contact-blue?style=for-the-badge&logo=gmail)](mailto:your-email@example.com)
+[![Email](https://img.shields.io/badge/Email-ericckfeng%40gmail.com-blue?style=for-the-badge&logo=gmail)](mailto:ericckfeng@gmail.com)
