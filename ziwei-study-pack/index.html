@@ -1,0 +1,1710 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>紫微一百四十四格研習</title>
+<link rel="icon" href="data:,">
+<meta name="description" content="紫微斗數十二表 × 十二命宮逐格研讀、古籍格局對照、筆記與練習。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 版面：表號/命宮選擇帶 → 本表格局條 → 左 4×4 命盤（同萬用命盤產生器 divOrder）、右研讀卡；另有 144 總覽、格局總表、十四主星、書目 */
+:root{
+  --paper:#eef1f0; --sheet:#fbfcfb; --ink:#1b2330; --ink-2:#4a5566; --rule:#cfd6d6;
+  --indigo:#2c4a86; --indigo-soft:#dfe6f3; --cinnabar:#b23a2a; --cinnabar-soft:#f5e1dc;
+  --gold:#8a6a1f; --gold-soft:#f1ead6; --jade:#2f6f5a; --jade-soft:#dcece5;
+  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12161d; --sheet:#1a2029; --ink:#e3e7ec; --ink-2:#9aa6b6; --rule:#2e3743;
+  --indigo:#8fa9e0; --indigo-soft:#233050; --cinnabar:#e9826f; --cinnabar-soft:#3d2320;
+  --gold:#d8b96a; --gold-soft:#33291a; --jade:#7cc4a7; --jade-soft:#1b3129; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12161d; --sheet:#1a2029; --ink:#e3e7ec; --ink-2:#9aa6b6; --rule:#2e3743;
+  --indigo:#8fa9e0; --indigo-soft:#233050; --cinnabar:#e9826f; --cinnabar-soft:#3d2320;
+  --gold:#d8b96a; --gold-soft:#33291a; --jade:#7cc4a7; --jade-soft:#1b3129; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65}
+a{color:var(--indigo)}
+.wrap{max-width:1240px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,4vw,38px);letter-spacing:.06em;margin:0;line-height:1.2;text-wrap:balance}
+h1 small{display:block;font-family:var(--f-body);font-weight:500;font-size:13px;letter-spacing:.08em;color:var(--ink-2);margin-top:4px}
+.vault{font-size:12px;color:var(--ink-2);text-align:right}
+.vault b{font-family:var(--f-mono);font-weight:500;color:var(--ink)}
+nav.tabs{display:flex;gap:4px;margin:14px 0 18px;flex-wrap:wrap}
+nav.tabs a{font-family:var(--f-display);font-weight:700;text-decoration:none;color:var(--ink-2);padding:6px 14px;border:1px solid transparent;border-radius:3px;letter-spacing:.06em}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-color:var(--ink);background:var(--sheet)}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+.picker{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;margin-bottom:12px}
+.picker label{font-size:12px;letter-spacing:.12em;color:var(--ink-2);white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-family:var(--f-body);font-size:13px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);padding:3px 9px;border-radius:3px;cursor:pointer;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+.chip .s{color:var(--ink-2);font-size:11px;margin-left:3px}
+.chip[aria-pressed="true"] .s{color:inherit;opacity:.75}
+.chip.pa{border-color:var(--cinnabar);color:var(--cinnabar)}
+.chip.pb{border-style:dashed;border-color:var(--gold);color:var(--gold)}
+.chip.on{background:var(--cinnabar-soft)}
+.tbpats{background:var(--sheet);border:1px solid var(--rule);padding:10px 12px;margin-bottom:16px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:start}
+.tbpats > span{font-size:12px;letter-spacing:.1em;color:var(--ink-2);padding-top:4px;white-space:nowrap}
+.study{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.study{grid-template-columns:1fr}}
+.chart{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,minmax(104px,auto));border:2px solid var(--ink);background:var(--sheet)}
+.pal{border:1px solid var(--rule);padding:6px 7px 22px;position:relative;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:3px}
+.pal:hover{background:var(--indigo-soft)}
+.pal .stars{display:flex;flex-wrap:wrap;gap:0 6px;font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.35}
+.pal .stars .borrow{font-weight:500;color:var(--ink-2);font-size:13px}
+.pal .gj{display:flex;flex-wrap:wrap;gap:2px}
+.pal .gj i{font-style:normal;font-size:11px;line-height:1.3;padding:0 4px;border-radius:2px;border:1px solid var(--cinnabar);color:var(--cinnabar);background:var(--sheet)}
+.pal .gj i.b{border-style:dashed;border-color:var(--gold);color:var(--gold)}
+.pal .br{position:absolute;right:6px;bottom:3px;font-family:var(--f-display);font-size:13px;color:var(--ink-2)}
+.pal .pn{position:absolute;left:7px;bottom:3px;font-size:12px;color:var(--ink-2);letter-spacing:.05em}
+.pal.ming{background:var(--cinnabar-soft)}
+.pal.ming .pn{color:var(--cinnabar);font-weight:700}
+.pal.tri{background:var(--gold-soft)}
+.pal.tri .pn{color:var(--gold);font-weight:700}
+.pal.jia{box-shadow:inset 0 0 0 2px var(--indigo-soft)}
+.center{grid-column:2/4;grid-row:2/4;border:1px solid var(--rule);padding:14px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center;min-width:0}
+.center .no{font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.center .big{font-family:var(--f-display);font-weight:900;font-size:clamp(20px,3vw,30px);line-height:1.25;text-wrap:balance}
+.center .sub{font-size:13px;color:var(--ink-2)}
+.code{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:13px;background:var(--paper);border:1px solid var(--rule);padding:2px 6px;border-radius:3px;user-select:all;word-break:break-all}
+.mini{font-size:12px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);border-radius:3px;padding:1px 7px;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-2);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;vertical-align:-2px;margin-right:4px;border:1px solid var(--rule)}
+@media (max-width:480px){.pal .stars{font-size:13px}.pal{padding:4px 4px 20px}.center{padding:8px}.pal .gj i{font-size:10px}}
+.card{background:var(--sheet);border:1px solid var(--rule);padding:18px 20px;min-width:0}
+.card h2{font-family:var(--f-display);font-weight:900;font-size:22px;margin:0 0 2px;letter-spacing:.04em}
+.card h3{font-size:12px;letter-spacing:.14em;color:var(--ink-2);font-weight:500;margin:18px 0 6px}
+.kv{display:grid;grid-template-columns:4.5em 1fr;gap:4px 10px;font-size:14px;margin:0}
+.kv dt{color:var(--ink-2)}
+.kv dd{margin:0;font-family:var(--f-display);font-weight:700}
+.tags{display:flex;flex-direction:column;gap:8px}
+.tag{border-left:3px solid var(--cinnabar);padding:4px 0 4px 10px}
+.tag b{font-family:var(--f-display);font-size:15px}
+.tag .cond{display:block;font-size:13px}
+.tag q{display:block;font-family:var(--f-display);color:var(--cinnabar);quotes:"「" "」";margin-top:2px}
+.tag small{display:block;color:var(--ink-2);font-size:12px}
+.tag.b{border-left-color:var(--gold);border-left-style:dashed}
+.tag.b q{color:var(--gold)}
+.tag.s{border-left-color:var(--indigo)}
+.empty{color:var(--ink-2);font-size:13px}
+.links{display:flex;flex-wrap:wrap;gap:4px}
+.note-src{font-size:12px;color:var(--ink-2)}
+.obs{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--rule);padding:10px;border-radius:3px}
+.obs .row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+/* overview */
+.ovw{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table.ov{border-collapse:collapse;font-size:13px;min-width:860px;width:100%}
+table.ov th,table.ov td{border:1px solid var(--rule);padding:0;text-align:center}
+table.ov thead th{font-family:var(--f-display);padding:6px 4px;background:var(--paper)}
+table.ov tbody th{font-weight:500;padding:4px 8px;text-align:left;white-space:nowrap;background:var(--paper);font-size:12px}
+table.ov td button{width:100%;min-height:52px;border:0;background:transparent;color:var(--ink);font-family:var(--f-display);font-weight:700;font-size:13px;cursor:pointer;padding:4px 2px;line-height:1.25;position:relative}
+table.ov td button:hover{background:var(--indigo-soft)}
+table.ov td button .k{display:block;font-family:var(--f-body);font-weight:400;font-size:10px;color:var(--cinnabar)}
+table.ov td button.void{color:var(--ink-2);font-weight:500}
+/* pattern table */
+.filters{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:12px;align-items:center}
+.filters .chips{gap:4px}
+.ptw{overflow-x:auto;border:1px solid var(--rule);background:var(--sheet)}
+table.pt{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+table.pt th,table.pt td{border-bottom:1px solid var(--rule);padding:8px;text-align:left;vertical-align:top}
+table.pt thead th{font-size:12px;letter-spacing:.08em;color:var(--ink-2);font-weight:500;background:var(--paper);position:sticky;top:0}
+table.pt td.n{font-family:var(--f-display);font-weight:700;font-size:15px;white-space:nowrap}
+table.pt td.n small{display:block;font-family:var(--f-body);font-weight:400;font-size:11px;color:var(--ink-2)}
+table.pt q{font-family:var(--f-display);quotes:"「" "」";color:var(--cinnabar)}
+.lv{display:inline-block;font-size:11px;padding:0 6px;border-radius:2px;border:1px solid}
+.lv.A{color:var(--cinnabar);border-color:var(--cinnabar)}
+.lv.B{color:var(--gold);border-color:var(--gold);border-style:dashed}
+.lv.C{color:var(--ink-2);border-color:var(--rule)}
+.kd{font-size:12px;color:var(--ink-2)}
+details summary{cursor:pointer;font-size:12px;color:var(--indigo)}
+/* stars & books */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.star h2{font-size:26px}
+.star .meta{font-size:12px;color:var(--ink-2);letter-spacing:.06em}
+.star p{margin:8px 0 6px;font-size:14px}
+.hua{display:flex;gap:4px;flex-wrap:wrap;font-size:12px}
+.hua span{border:1px solid var(--rule);padding:0 6px;border-radius:2px}
+.hua .ji{color:var(--cinnabar);border-color:var(--cinnabar)}
+.prose{max-width:72ch}
+.prose h2{font-family:var(--f-display);font-weight:900;font-size:22px;margin:28px 0 8px}
+.prose h3{font-size:13px;letter-spacing:.1em;color:var(--ink-2);font-weight:500;margin:16px 0 6px}
+.prose ol,.prose ul{padding-left:1.4em}
+.books{border-collapse:collapse;width:100%;font-size:14px}
+.books td,.books th{border-bottom:1px solid var(--rule);padding:6px 8px;text-align:left;vertical-align:top}
+.books th{font-size:12px;color:var(--ink-2);font-weight:500;letter-spacing:.08em}
+.books td:first-child{font-family:var(--f-display);font-weight:700}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--sheet);padding:8px 16px;border-radius:3px;font-size:14px}
+@media (prefers-reduced-motion:no-preference){.pal,.chip,table.ov td button{transition:background-color .12s}}
+
+/* ───────── 研習包新增：首頁、筆記編輯、練習、備份 ───────── */
+[hidden]{display:none!important}
+body{margin:0}
+button{font:inherit}
+.btn{font-family:var(--f-body);font-size:15px;border:1px solid var(--ink);background:var(--ink);color:var(--sheet);padding:9px 18px;border-radius:4px;cursor:pointer;line-height:1.3}
+.btn:hover{opacity:.88}
+.btn.ghost{background:var(--sheet);color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--ink-2);opacity:1}
+.btn.big{font-size:18px;padding:12px 24px;font-family:var(--f-display);font-weight:700;letter-spacing:.06em}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.banner{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--gold-soft);border:1px solid var(--gold);color:var(--ink);padding:10px 14px;border-radius:4px;margin:0 0 14px;font-size:14px}
+.banner.warn{background:var(--cinnabar-soft);border-color:var(--cinnabar)}
+.home{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:900px){.home{grid-template-columns:1fr}}
+.hero{background:var(--sheet);border:1px solid var(--rule);padding:22px 24px}
+.hero .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--ink-2)}
+.hero .next{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,4vw,36px);margin:4px 0 2px;line-height:1.25}
+.hero p{margin:6px 0 16px;color:var(--ink-2)}
+.steps{margin:0;padding-left:1.3em;font-size:14px}
+.steps li{margin:4px 0}
+.prog{height:10px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;overflow:hidden;display:flex}
+.prog i{display:block;height:100%}
+.prog .done{background:var(--jade)} .prog .doing{background:var(--gold)}
+.stat{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;font-size:13px;color:var(--ink-2)}
+.stat b{font-family:var(--f-display);font-size:22px;color:var(--ink);margin-right:2px;font-variant-numeric:tabular-nums}
+.minigrid{display:grid;grid-template-columns:auto repeat(12,1fr);gap:2px;margin-top:12px;font-size:11px;color:var(--ink-2)}
+.minigrid button{aspect-ratio:1;border:1px solid var(--rule);background:var(--sheet);border-radius:2px;cursor:pointer;padding:0;min-width:0}
+.minigrid button.s1{background:var(--gold-soft);border-color:var(--gold)}
+.minigrid button.s2{background:var(--jade);border-color:var(--jade)}
+.minigrid span{text-align:right;padding-right:4px;white-space:nowrap;align-self:center}
+/* 筆記編輯 */
+.notes{margin-top:20px;background:var(--sheet);border:1px solid var(--rule);padding:18px 20px}
+.notes-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;margin-bottom:6px}
+.notes-head h2{font-family:var(--f-display);font-weight:900;font-size:20px;margin:0}
+.saved{font-size:12px;color:var(--ink-2)}
+.saved.err{color:var(--cinnabar)}
+.status-pick{display:inline-flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.status-pick button{border:0;background:var(--sheet);color:var(--ink-2);padding:5px 12px;cursor:pointer;font-size:14px}
+.status-pick button+button{border-left:1px solid var(--rule)}
+.status-pick button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.status-pick button[data-s="已完成"][aria-pressed="true"]{background:var(--jade);color:#fff}
+.status-pick button[data-s="研讀中"][aria-pressed="true"]{background:var(--gold);color:#fff}
+.field{margin-top:14px}
+.field label{display:block;font-family:var(--f-display);font-weight:700;font-size:15px}
+.field .hint{display:block;font-size:12px;color:var(--ink-2);margin:2px 0 6px}
+.field textarea{width:100%;min-height:110px;resize:vertical;font:15px/1.7 var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:10px 12px;field-sizing:content}
+.field textarea:focus{outline:2px solid var(--indigo);outline-offset:0;background:var(--sheet)}
+.field textarea[readonly]{opacity:.7}
+.adv{margin-top:12px;font-size:12px;color:var(--ink-2)}
+/* 總覽狀態 */
+table.ov td button.s1{background:var(--gold-soft)}
+table.ov td button.s2{background:var(--jade-soft)}
+table.ov td button .st{position:absolute;top:2px;right:4px;font-size:10px;font-weight:400;font-family:var(--f-body)}
+table.ov td button.s1 .st{color:var(--gold)} table.ov td button.s2 .st{color:var(--jade)}
+/* 抽屜編輯器 */
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;justify-content:flex-end;z-index:20}
+.drawer>div{width:min(640px,100%);height:100%;overflow:auto;background:var(--paper);padding:16px;box-shadow:-8px 0 24px rgba(0,0,0,.2)}
+.drawer .notes{margin-top:0}
+/* 練習 */
+.quiz{max-width:720px}
+.qcard{background:var(--sheet);border:1px solid var(--rule);padding:22px 24px}
+.qcard .q{font-family:var(--f-display);font-weight:900;font-size:clamp(20px,3vw,26px);line-height:1.4;margin:6px 0 16px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.opts button{border:1px solid var(--rule);background:var(--paper);color:var(--ink);padding:12px;border-radius:4px;cursor:pointer;font-family:var(--f-display);font-weight:700;font-size:16px;text-align:center}
+.opts button:hover{border-color:var(--ink-2)}
+.opts button.ok{background:var(--jade-soft);border-color:var(--jade);color:var(--jade)}
+.opts button.ng{background:var(--cinnabar-soft);border-color:var(--cinnabar);color:var(--cinnabar)}
+.explain{margin-top:14px;padding:10px 12px;border-left:3px solid var(--indigo);background:var(--indigo-soft);font-size:14px}
+/* 備份頁 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.cards .card p{font-size:14px;margin:6px 0 12px}
+.where{font-family:var(--f-display);font-weight:700;font-size:18px}
+/* 對話框 */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:grid;place-items:center;z-index:30;padding:16px}
+.modal>div{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;max-width:480px;width:100%;padding:20px 22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.modal h3{font-family:var(--f-display);font-weight:900;font-size:20px;margin:0 0 8px}
+.modal p{font-size:14px;margin:0 0 16px}
+.modal .row{justify-content:flex-end}
+.toast{z-index:40}
+@media print{nav.tabs,.banner,.notes,.btn{display:none!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>紫微一百四十四格研習<small>十二表 × 十二命宮 ‧ 古籍格局對照 ‧ 以古籍與慧心齋主著作為本</small></h1>
+    <div class="vault">研習包 v1.1.0<br><b>筆記：研習包裡的「筆記」資料夾</b></div>
+  </header>
+  <nav class="tabs" aria-label="分頁">
+    <a href="#home" data-tab="home">開始</a>
+    <a href="#study" data-tab="study">逐格研讀</a>
+    <a href="#overview" data-tab="overview">144 格總覽</a>
+    <a href="#patterns" data-tab="patterns">格局總表</a>
+    <a href="#stars" data-tab="stars">十四主星</a>
+    <a href="#quiz" data-tab="quiz">練習</a>
+    <a href="#books" data-tab="books">書目與路徑</a>
+    <a href="#backup" data-tab="backup">筆記與備份</a>
+  </nav>
+  <div id="banner" class="banner" hidden></div>
+
+  <section id="v-home"></section>
+
+  <section id="v-study" hidden>
+    <div class="picker">
+      <label>表號</label><div class="chips" id="tPick"></div>
+      <label>命宮</label><div class="chips" id="mPick"></div>
+    </div>
+    <div class="tbpats" id="tbPats"></div>
+    <div class="study">
+      <div>
+        <div class="chart" id="chart"></div>
+        <div class="legend"><span><i style="background:var(--cinnabar-soft)"></i>命宮</span><span><i style="background:var(--gold-soft)"></i>三方四正</span><span><i style="box-shadow:inset 0 0 0 2px var(--indigo-soft)"></i>夾宮</span><span><i style="border-color:var(--cinnabar)"></i>以此宮為命即成格</span><span><i style="border:1px dashed var(--gold)"></i>主星條件已具，待輔星</span></div>
+      </div>
+      <article class="card" id="detail"></article>
+    </div>
+    <div id="studyNotes"></div>
+  </section>
+
+  <section id="v-overview" hidden>
+    <p class="note-src">每列一表（紫微所在），每欄一命宮。紅字為以主星即可判定的古籍格局（不含殺破狼、命無正曜）。黃底是研讀中，綠底是已完成。點格子進入研讀。</p>
+    <div class="ovw"><table class="ov" id="ovTable"></table></div>
+  </section>
+
+  <section id="v-patterns" hidden>
+    <div class="filters">
+      <div class="chips" id="fCls" role="group" aria-label="判定層級"></div>
+      <div class="chips" id="fKind" role="group" aria-label="類別"></div>
+    </div>
+    <div class="ptw"><table class="pt" id="ptTable"></table></div>
+    <p class="note-src prose">判定層級：<b>A</b> 只看主星與地支即可判定；<b>B</b> 主星條件已具，還要看輔星、煞星或年干，表中列出主星條件成立的位置；<b>C</b> 純由輔星、煞星、四化構成，與十二表無關，請在萬用命盤產生器第 4 圖層判定。條件與古訣以《紫微斗數全書》通行本為底，各家寬嚴不一處已在備註說明。</p>
+  </section>
+
+  <section id="v-stars" hidden>
+    <p class="note-src prose">五行、斗分、化氣依《紫微斗數全書》通行說法，各家略有出入；性情關鍵詞為入門提要。四化依萬用命盤產生器所用之表（庚干：陽武同陰）。</p>
+    <div class="grid" id="starGrid"></div>
+  </section>
+
+  <section id="v-quiz" hidden></section>
+  <section id="v-books" hidden><div class="prose" id="books"></div></section>
+  <section id="v-backup" hidden></section>
+</div>
+<input type="file" id="inZip" accept=".zip,application/zip" hidden>
+<input type="file" id="inDir" webkitdirectory multiple hidden>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="config.js"></script>
+<script>
+/* 紫微研習核心：十二表主星、格局判定、筆記範本、段落合併、zip。
+   不碰 DOM，瀏覽器與 Node（建置腳本）共用。由 gen2.py／gen_notes.py 移植。 */
+(function (root) {
+"use strict";
+const BR = "子丑寅卯辰巳午未申酉戌亥";
+const PAL = ["命宮","兄弟","夫妻","子女","財帛","疾厄","遷移","交友","事業","田宅","福德","父母"];
+const ORDER = ["紫微","天機","太陽","武曲","天同","廉貞","天府","太陰","貪狼","巨門","天相","天梁","七殺","破軍"];
+const SHORT = Object.fromEntries(ORDER.map((s, i) => [s, "紫機日武同廉府月貪巨相梁殺破"[i]]));
+const SUN_DOWN = new Set([8,10,11,0,1]), MOON_DOWN = new Set([3,5,6]);   // 太陽／太陰落陷地支
+const mod = (a, n = 12) => ((a % n) + n) % n;
+const pad = n => String(n).padStart(2, "0");
+
+function major(t) {
+  const z = (t - 1) % 12, p = Array.from({ length: 12 }, () => []);
+  for (const [s, o] of [["紫微",0],["天機",-1],["太陽",-3],["武曲",-4],["天同",-5],["廉貞",-8]]) p[mod(z + o)].push(s);
+  const f = mod(4 - z);
+  for (const [s, o] of [["天府",0],["太陰",1],["貪狼",2],["巨門",3],["天相",4],["天梁",5],["七殺",6],["破軍",10]]) p[mod(f + o)].push(s);
+  for (const x of p) x.sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b));
+  return p;
+}
+const TABLES = Array.from({ length: 12 }, (_, i) => major(i + 1));
+
+// 永久暗合橋：十二表中位置和恆 ≡ 1（地支六合）
+const BRIDGES = (() => {
+  const pos = TABLES.map(T => { const o = {}; T.forEach((a, b) => a.forEach(s => o[s] = b)); return o; });
+  const out = [];
+  ORDER.forEach((a, i) => ORDER.slice(i + 1).forEach(b => { if (pos.every(p => mod(p[a] + p[b]) === 1)) out.push([a, b]); }));
+  return out;
+})();
+
+class Ctx {
+  constructor(P, m) { this.P = P; this.m = m; }
+  at(k) { return this.P[mod(this.m + k)]; }                 // 相對命宮位移 k（順時針支序）
+  has(b, ...st) { return st.every(x => this.P[mod(b)].includes(x)); }
+  ming(...st) { return this.has(this.m, ...st); }
+  only(...st) { return [...this.P[this.m]].sort().join() === [...st].sort().join(); }   // 命宮恰為這些主星
+  get empty() { return !this.P[this.m].length; }
+  get sf() { return [...this.P[this.m], ...this.at(4), ...this.at(8), ...this.at(6)]; }   // 三方四正
+  get cai() { return this.at(8); }    // 財帛 = 命-4
+  get guan() { return this.at(4); }   // 事業 = 命-8
+  get qian() { return this.at(6); }
+  jia(a, b) { const L = this.P[mod(this.m - 1)], R = this.P[mod(this.m + 1)]; return (L.includes(a) && R.includes(b)) || (L.includes(b) && R.includes(a)); }
+}
+const inn = (m, ...a) => a.includes(m);
+
+// A = 主星與地支即可判定；B = 主星條件已具，尚需輔星／煞星／年干；C = 純輔煞四化，與主星表無關
+const DEFS = [
+ ["zifutonggong","紫府同宮","A","富貴","紫微、天府同守命，只在寅申","紫府同宮，終身福厚","","","", c => c.ming("紫微","天府")],
+ ["zifuchaoyuan","紫府朝垣","A","富貴","紫微、天府分居三方照命。四式：武相寅申；廉貞寅申；廉相子午；天相丑未而對宮紫微","紫府朝垣，食祿萬鍾","","","", c => {
+   const m = c.m, S = [...c.at(4), ...c.at(8), ...c.at(6)];
+   if (!(S.includes("紫微") || S.includes("天府"))) return false;
+   return (inn(m,2,8) && c.only("武曲","天相")) || (inn(m,2,8) && c.only("廉貞")) || (inn(m,0,6) && c.only("廉貞","天相")) || (inn(m,1,7) && c.only("天相") && c.qian.includes("紫微")); }],
+ ["fuxiangchaoyuan","府相朝垣","A","富貴","天府、天相分居財帛、事業照命。三式：命無正曜（丑未卯酉）；天府坐命於丑卯巳未酉亥；廉貞坐寅申","府相朝垣，千鍾食祿","通行解釋寬嚴不一，嚴格說法要求命無正曜","","", c => {
+   const S = [...c.cai, ...c.guan], m = c.m, both = S.includes("天府") && S.includes("天相");
+   if (c.empty && inn(m,1,7,3,9)) return both;
+   if (c.only("天府") && inn(m,1,3,5,7,9,11)) return S.includes("天相");
+   if (c.only("廉貞") && inn(m,2,8)) return both;
+   return false; }],
+ ["jiyuetongliang","機月同梁","A","富貴","命在寅申，天機、太陰、天同、天梁全入三方四正","機月同梁作吏人","寅申最喜同梁會；見煞則為一般公職、幕僚之格","","", c => inn(c.m,2,8) && ["天機","太陰","天同","天梁"].every(x => c.sf.includes(x))],
+ ["tanhua","探花格（俗稱）","A","富貴","天機、太陰同守命於寅申，左右兩鄰為紫微、天府","","機月同梁之一式，兼紫府夾命；《全書》未見此名，屬後世通稱，出處待查","機陰寅申","", c => inn(c.m,2,8) && c.ming("天機","太陰")],
+ ["jiliang","機梁加會（善蔭朝綱）","A","富貴","天機、天梁同守命於辰戌","機梁會合善談兵","吉少見煞者偏向宗教、哲學","善蔭朝綱","", c => c.ming("天機","天梁")],
+ ["jutong","巨日同宮","A","富貴","巨門、太陽同守命於寅申，寅宮為上","巨日同宮，官封三代","","","", c => c.ming("巨門","太陽")],
+ ["jincan","金燦光輝（日麗中天）","A","富貴","太陽獨守命於午","太陽居午，謂之日麗中天","庚辛年生最佳","日麗中天","", c => c.m === 6 && c.ming("太陽")],
+ ["rizhao","日照雷門（日出扶桑）","A","富貴","太陽、天梁同守命於卯；酉宮為日落西山，不入格","日照雷門，富貴榮華","宜白天生人","日出扶桑","", c => c.m === 3 && c.ming("太陽","天梁")],
+ ["mingzhu","明珠出海","A","富貴","命在未無正曜，卯宮太陽天梁、亥宮太陰三合照命，對宮同巨","日卯月亥，安命未，蟾宮折桂之榮","","","", c => c.m === 7 && c.empty && c.has(3,"太陽") && c.has(11,"太陰")],
+ ["yuelang","月朗天門（月落亥宮）","A","富貴","太陰獨守命於亥","月朗天門，晉爵封侯","宜夜生人","月落亥宮","", c => c.m === 11 && c.ming("太陰")],
+ ["riyuebingming","日月並明","A","富貴","二式：命丑天梁，巳宮太陽、酉宮太陰照命；命午無正曜，寅宮巨日、子宮同陰照命","日月並明，佐九重於堯殿","","","", c => (c.m === 1 && c.ming("天梁") && c.has(5,"太陽") && c.has(9,"太陰")) || (c.m === 6 && c.empty && c.has(2,"太陽") && c.has(0,"太陰"))],
+ ["danchi","丹墀桂墀","A","富貴","命宮三方四正見太陽於辰巳、太陰於酉戌，二星皆旺","丹墀桂墀，早遂青雲之志","會照範圍各家說法不一，此處取三方四正","","", c => {
+   const s = [c.m, mod(c.m+4), mod(c.m+8), mod(c.m+6)];
+   return s.some(b => c.has(b,"太陽") && inn(b,4,5)) && s.some(b => c.has(b,"太陰") && inn(b,9,10)); }],
+ ["yuesheng","月生滄海（水澄桂萼）","A","富貴","天同、太陰同守命於子","太陰居子，丙丁生人，富貴忠良","《全書》另有同陰子宮守田宅之說","水澄桂萼","", c => c.m === 0 && c.ming("天同","太陰")],
+ ["erjie","二曜同臨","A","富貴","命丑而日月在未，或命未而日月在丑（命無正曜，借日月）","日月科祿丑未中，定是方伯公","","","", c => c.empty && inn(c.m,1,7) && c.has(c.m+6,"太陽","太陰")],
+ ["shouxing","壽星入廟","A","富貴","天梁守命於午","","丁年生為上格","","", c => c.m === 6 && c.ming("天梁")],
+ ["yingxing","英星入廟","A","富貴","破軍守命於子午","子午破軍，加官進爵","甲癸年生為上格","","", c => inn(c.m,0,6) && c.ming("破軍")],
+ ["shizhong","石中隱玉","A","富貴","巨門守命於子午","子午巨門，石中隱玉","辛癸年生入格","","", c => inn(c.m,0,6) && c.ming("巨門")],
+ ["qisha","七殺朝斗／仰斗","A","富貴","七殺守命於寅申子午；申午為朝斗，寅子為仰斗","七殺朝斗，爵祿榮昌","","","", c => inn(c.m,0,2,6,8) && c.ming("七殺")],
+ ["jijutonglin","巨機同臨","A","富貴","巨門、天機同守命於卯；酉宮不入此格","巨機居卯，乙辛己丙至公卿","","","", c => c.m === 3 && c.ming("巨門","天機")],
+ ["wutan","貪武同行","A","富貴","武曲、貪狼同守命於丑未","貪武同行，威鎮邊夷","多三十歲後發達，俗稱「武貪不發少年人」","","", c => c.ming("武曲","貪狼")],
+ ["zifujia","紫府夾命","A","富貴","命在寅申，紫微、天府分居兩鄰","夾月夾日誰能遇","貴星夾命之一式；寅申宮或為機陰（探花格）或為空宮","","", c => inn(c.m,2,8) && c.jia("紫微","天府")],
+ ["riyuejia","日月夾命","A","富貴","命在丑未，太陽、太陰分居兩鄰","夾月夾日誰能遇","貴星夾命之一式；命宮須廟旺有吉","","", c => inn(c.m,1,7) && c.jia("太陽","太陰")],
+ ["xiongsu","雄宿朝垣（權星朝垣）","A","富貴","廉貞獨守命於寅申，無煞","","古本有「未申」之說，未宮為廉殺同宮，各家爭議；此處取寅申","權星朝垣","", c => inn(c.m,2,8) && c.only("廉貞")],
+ ["jixiang","極向離明","A","富貴","紫微守命於午，三方四正無煞","紫微居午無煞湊，位至公卿","紫微居子則威勢遠遜","","", c => c.m === 6 && c.ming("紫微")],
+ ["riyuezhaobi","日月照壁","A","富貴","太陽、太陰同在丑未之田宅宮（此時命宮為辰戌破軍）","","主多不動產","","", c => c.at(-9).length > 0 && c.has(c.m-9,"太陽","太陰")],
+ ["jiangxing","將星得地（武曲守垣）","A","富貴","武曲守命於辰戌丑未廟地","武曲廟垣，威名赫奕","廟地依通行廟旺表","武曲守垣","", c => inn(c.m,1,4,7,10) && c.ming("武曲")],
+ ["zixiangpo","紫相遇破軍","A","雜","紫微、天相守命於辰戌，對宮破軍","紫微辰戌遇破軍，富而不貴有虛名","","","", c => inn(c.m,4,10) && c.ming("紫微") && c.qian.includes("破軍")],
+ ["jiju","極居卯酉","A","雜","紫微、貪狼同守命於卯酉","","古稱桃花犯主，多出世之想","","", c => inn(c.m,3,9) && c.ming("紫微","貪狼")],
+ ["liangtong","梁同巳亥","A","雜","天同、天梁一守命一在對宮，於巳亥","梁同巳亥，男多浪蕩女多淫","古訣警語，需配合煞化再論，不宜直斷","","", c => inn(c.m,5,11) && ((c.ming("天梁") && c.qian.includes("天同")) || (c.ming("天同") && c.qian.includes("天梁")))],
+ ["fanshui","泛水桃花","A","雜","貪狼守命於子（亥宮廉貪同度亦屬之）","","古訣警語，需配合煞化再論","","", c => inn(c.m,0,11) && c.ming("貪狼")],
+ ["riyuefanbei","日月反背","A","凶","命宮三方四正見太陽落陷、太陰落陷","","古稱最嫌；廟陷依通行日月廟陷表","","", c => {
+   const s = [c.m, mod(c.m+4), mod(c.m+8), mod(c.m+6)];
+   return s.some(b => c.has(b,"太陽") && SUN_DOWN.has(b)) && s.some(b => c.has(b,"太陰") && MOON_DOWN.has(b)); }],
+ ["shapolang","殺破狼","A","結構","命宮坐七殺、破軍、貪狼之一，三方必會齊","","三合恆定的鐵三角之一","","", c => ["七殺","破軍","貪狼"].some(x => c.P[c.m].includes(x))],
+ ["kong","命無正曜","A","結構","命宮無主星，借對宮主星入命","","","","", c => c.empty],
+ // B：主星條件已具，尚需輔星／煞星／年干
+ ["yangliang","陽梁昌祿","B","富貴","太陽、天梁會於命宮三方四正，再得文昌、祿存","天梁太陽昌祿會，臚傳第一名","嚴格版為陽梁卯、乙年祿存同守。俗稱狀元格","狀元格","文昌、祿存", c => c.sf.includes("太陽") && c.sf.includes("天梁")],
+ ["matou","馬頭帶箭","B","富貴","命在午，同陰或貪狼守命，擎羊同宮","馬頭帶箭，鎮禦邊疆","丙戊年生","","擎羊同宮（丙戊年）", c => c.m === 6 && (c.ming("天同","太陰") || c.ming("貪狼"))],
+ ["xingqiu","刑囚夾印","B","凶","廉貞、天相守命，擎羊同宮或夾","","刑忌夾印同類；古稱多官非","","擎羊（或天刑）", c => c.ming("廉貞","天相")],
+ ["huotan","火貪／鈴貪","B","富貴","貪狼守命，火星或鈴星同宮或三方拱照","火星拱會誠為貴","辰戌丑未尤美","","火星或鈴星", c => c.ming("貪狼")],
+ ["huaxing","化星返貴","B","富貴","天同守命於戌逢丁年，或巨門守命於辰逢辛年","天同戌宮為反背，丁人化吉主大貴","巨門辰戌為陷地，辛人化吉祿崢嶸","","丁年（天同戌）或辛年（巨門辰）", c => (c.m === 10 && c.ming("天同")) || (c.m === 4 && c.ming("巨門"))],
+ ["junchen","君臣慶會","B","富貴","紫微守命，三方四正會府相、左右、昌曲，無煞","君臣慶會，才學經邦","","","左輔右弼、文昌文曲", c => c.ming("紫微")],
+ ["tianfuchao","天府朝垣","B","富貴","廉貞、天府同守命於戌，會祿存科權祿，不見煞","","甲己年最佳","","祿存或化祿等吉曜，無煞", c => c.m === 10 && c.ming("廉貞","天府")],
+ ["wenliang","文梁振紀","B","富貴","天梁旺地守命，文昌或文曲同宮","天梁廟旺，左右昌曲加會，出將入相","","","文昌或文曲同宮", c => c.ming("天梁")],
+ ["lianzhenwenwu","廉貞文武","B","富貴","廉貞入廟守命於寅申，昌曲拱照","廉貞遇文昌，好禮樂","","","文昌、文曲拱照", c => inn(c.m,2,8) && c.ming("廉貞")],
+ ["lingchang","鈴昌陀武","B","凶","武曲守命，鈴星、文昌、陀羅會合","","古稱惡格","","鈴星、文昌、陀羅", c => c.ming("武曲")],
+ ["shengbu","生不逢時","B","凶","廉貞守命，逢地空或地劫","","","","地空或地劫同宮", c => c.ming("廉貞")],
+ ["liangma","梁馬飄蕩","B","凶","天梁守命於寅申巳亥，天馬同宮","","古訣負面，不宜照字面直斷","","天馬同宮", c => inn(c.m,2,5,8,11) && c.ming("天梁")],
+ ["lumapeiyin","祿馬佩印","B","富貴","天相守命，祿存或化祿與天馬同宮","","","","祿存或化祿、天馬同宮", c => c.ming("天相")],
+ ["cailujiama","財祿夾馬","B","富貴","太陽或天同守命於巳亥，天馬同宮，武曲與破軍化祿夾命","","癸年生","","癸年、天馬同宮", c => inn(c.m,5,11) && (c.only("太陽") || c.only("天同")) && c.jia("武曲","破軍")],
+];
+// C：純輔煞四化（主星表無法判定，總表列名供查）
+const C_LIST = [
+ ["左右同宮","命身在丑未，左輔右弼同宮","左右同宮，披羅衣紫"],
+ ["文桂文華","命身在丑未，文昌文曲同宮或照","文桂文華，佐九重於堯殿"],
+ ["左右夾命","命在丑未，左輔右弼分居兩鄰",""],
+ ["昌曲夾命（文星暗拱）","命在丑未，文昌文曲分居兩鄰","夾昌夾曲主貴兮"],
+ ["天乙拱命（坐貴向貴）","天魁天鉞一在命、一在身或遷移","魁鉞同行，位居台輔"],
+ ["輔拱文星","文昌守命，左輔拱照",""],
+ ["祿文拱命","祿存守命，昌曲拱照，不見煞",""],
+ ["祿合鴛鴦","祿存與化祿同守命","雙祿重逢，終身富貴"],
+ ["雙祿朝垣","祿存與化祿會於命宮三方四正","雙祿重逢，終身富貴"],
+ ["祿馬交馳","祿存或化祿與天馬同宮或會照",""],
+ ["三奇加會","化祿、化權、化科會於命宮三方四正","科權祿拱，定為折桂之高人"],
+ ["權祿巡逢","化祿、化權守命或會照","權祿重逢，財官雙美"],
+ ["科權祿夾","三化中兩化在命宮兩鄰夾命","科權祿夾為貴格"],
+ ["雙祿夾命","祿存與化祿分居命宮兩鄰","化祿及祿存夾身命，主富貴"],
+ ["明祿暗祿","命宮化祿（或祿存），暗合宮有祿存（或化祿）","明祿暗祿，錦上添花"],
+ ["科明祿暗","命宮化科，暗合宮有祿存","科明祿暗，位列三台"],
+ ["甲第登庸","化科守命，化權三方朝照","科命權朝，登庸甲第"],
+ ["科名會祿","化科守命，化祿三方來朝","科祿命逢兼合吉"],
+ ["權煞化祿","羊陀火鈴入廟守命，三方有吉","擎羊入廟加吉，富貴聲揚"],
+ ["羊陀夾忌","化忌守命，擎羊陀羅分居兩鄰",""],
+];
+
+const PATS = DEFS.map(([key, name, cls, kind, cond, quote, note, alias, need, f]) => ({ key, name, cls, kind, cond, quote, note, alias, need, f, occ: [] }));
+const CELLS = [];
+for (let t = 1; t <= 12; t++) {
+  const P = TABLES[t - 1];
+  for (let m = 0; m < 12; m++) {
+    const c = new Ctx(P, m), id = pad(t) + pad(m), own = P[m];
+    const ks = PATS.filter(p => p.f(c)).map(p => p.key);
+    PATS.forEach(p => { if (ks.includes(p.key)) p.occ.push(id); });
+    CELLS.push({ id, t, m, stars: own, borrow: own.length ? [] : P[mod(m + 6)],
+      combo: own.length ? own.map(s => SHORT[s]).join("") : "空",
+      tri: { 命: P[m], 財: P[mod(m + 8)], 官: P[mod(m + 4)], 遷: P[mod(m + 6)] },
+      pats: ks, anhe: mod(1 - m), anheStars: P[mod(1 - m)], code: `${pad(t)}00${pad(m + 1)}0000003` });
+  }
+}
+PATS.forEach(p => delete p.f);
+C_LIST.forEach(([name, cond, quote], i) => PATS.push({ key: "c" + i, name, cls: "C", kind: name === "羊陀夾忌" ? "凶" : "富貴", cond, quote, note: "", alias: "", need: "", occ: [] }));
+
+const PK = Object.fromEntries(PATS.map(p => [p.key, p]));
+const CELL = Object.fromEntries(CELLS.map(c => [c.id, c]));
+const PARTNER = {}; BRIDGES.forEach(([a, b]) => { PARTNER[a] = b; PARTNER[b] = a; });
+const QUIET = new Set(["shapolang", "kong"]);
+const cellId = (t, m) => pad(t) + pad(m);
+const twinOf = c => CELL[cellId((c.t + 5) % 12 + 1, (c.m + 6) % 12)];
+
+const SIHUA = {"甲":["廉貞","破軍","武曲","太陽"],"乙":["天機","天梁","紫微","太陰"],"丙":["天同","天機","文昌","廉貞"],"丁":["太陰","天同","天機","巨門"],"戊":["貪狼","太陰","右弼","天機"],"己":["武曲","貪狼","天梁","文曲"],"庚":["太陽","武曲","天同","太陰"],"辛":["巨門","太陽","文曲","文昌"],"壬":["天梁","紫微","左輔","武曲"],"癸":["破軍","巨門","太陰","貪狼"]};
+const STARS = {
+ "紫微":{dou:"北斗主星（帝座）",wx:"陰土",hua:"化氣為尊",grp:1,kw:"尊貴、主導、自我要求高。喜百官朝拱（左右昌曲魁鉞），忌孤君無輔。"},
+ "天機":{dou:"南斗",wx:"陰木",hua:"化氣為善",grp:2,kw:"機智、思慮、變動、企劃。善謀而多慮，與巨門、天梁、太陰組合各異。"},
+ "太陽":{dou:"中天",wx:"陽火",hua:"化氣為貴",grp:2,kw:"光明、付出、名聲。最重日夜廟陷：寅至午旺廟，未平，申至丑多陷（酉為地）。"},
+ "武曲":{dou:"北斗",wx:"陰金",hua:"化氣為財",grp:1,kw:"財星、果決、執行、剛直。與貪、殺、破、相、府同宮各成一格。"},
+ "天同":{dou:"南斗",wx:"陽水",hua:"化氣為福",grp:2,kw:"福星、享受、情緒、赤子之心。多需經歷激發。"},
+ "廉貞":{dou:"北斗",wx:"陰火",hua:"化氣為囚",grp:1,kw:"次桃花、規範、才藝、官非，邪正兩面，最受同宮星曜與四化左右。"},
+ "天府":{dou:"南斗主星",wx:"陽土",hua:"令星・財庫",grp:1,kw:"保守、包容、守成、庫藏。逢空劫為空庫，喜祿存化祿入庫。"},
+ "太陰":{dou:"中天",wx:"陰水",hua:"化氣為富",grp:2,kw:"田宅、母性、細膩、積蓄。重廟陷：亥子丑廟、酉戌旺，卯巳午陷。"},
+ "貪狼":{dou:"北斗",wx:"陽木（體屬水）",hua:"化氣為桃花",grp:1,kw:"欲望、交際、多才多藝、玄學宗教。遇火鈴另成橫發之格。"},
+ "巨門":{dou:"北斗",wx:"陰水",hua:"化氣為暗",grp:2,kw:"口才、是非、研究、疑慮。十二支唯未宮陷，喜太陽照耀解其暗。"},
+ "天相":{dou:"南斗",wx:"陽水",hua:"化氣為印",grp:1,kw:"印綬、輔佐、公正、服務。極受夾宮影響：財蔭夾印吉，刑忌夾印凶。"},
+ "天梁":{dou:"南斗",wx:"陽土",hua:"化氣為蔭",grp:2,kw:"庇蔭、長者、清高、逢凶化吉。先有難而後有解。"},
+ "七殺":{dou:"南斗",wx:"陰金（屬火金）",hua:"將星",grp:1,kw:"衝鋒、權威、獨立、成敗起伏。寅申子午與紫府相對成格。"},
+ "破軍":{dou:"北斗",wx:"陰水",hua:"化氣為耗",grp:1,kw:"破舊立新、開創、消耗、變動。子午稱英星入廟。"},
+};
+const STRUCT_NOTE = {
+ zifutonggong: "紫微與天府的位置和恆為 4（mod 12），寅申是這個對稱的不動點，所以紫府只能在寅申同宮。",
+ fuxiangchaoyuan: "天府與天相在十二表中恆成三合，這條邊永遠存在。",
+ shapolang: "貪狼、七殺、破軍在十二表中恆成三合，是固定的鐵三角。",
+ jutong: "太陽、巨門彼此沒有固定的三合或對宮關係，只在特定表號相遇。",
+};
+const BOOKS = [
+ ["慧心齋主談命宮","大塊文化・生命之旅","2025","9786267594322","144 格命宮筆記主軸。甲級星分第一至第三系列，另論六吉、六煞、四化、乙級星與盤性。"],
+ ["慧心齋主談星際關係","大塊文化・生命之旅","2025","9786267594315","十二宮與星曜彼此關係，第四章論戀愛婚姻。書末附基礎命盤表一至表十二，與本研習的表號對照。"],
+ ["紫微斗數新詮 四十周年增訂版","大塊文化・生命之旅","2021","9789865549411","附修練指引手冊。名詞、十二宮、各星系分析，星性基礎。"],
+ ["紫微四化星","大塊文化・生命之旅","2021","9789865549428","副題「如何改變一生的祕笈」，附奇妙修練日記簿。甲至癸十干四化逐章、四化與大運流年、十個命例。"],
+ ["紫微斗數全書","明刊本","—","—","〈太微賦〉〈骨髓賦〉〈形性賦〉〈女命骨髓賦〉〈諸星問答論〉及定富局、定貴局。格局總表的古訣底本，各刊本文字略異。"],
+];
+
+/* ───────── 名稱與路徑（相對於「筆記」資料夾） ───────── */
+const tname = t => `表${pad(t)}-紫微在${BR[t - 1]}`;
+const cname = c => `表${pad(c.t)}-命${BR[c.m]}`;
+const pfile = p => p.name.replace(/（.*?）/g, "").replace(/／/g, "");
+const shortName = n => n.replace(/（.*?）/g, "");
+const label = c => `表${c.t}・命${BR[c.m]}`;
+const PATH = {
+  cell: c => `144格/${tname(c.t)}/${cname(c)}.md`,
+  table: t => `144格/${tname(t)}/${tname(t)}.md`,
+  pat: p => `格局/${pfile(p)}.md`,
+  star: s => `十四主星/${s}.md`,
+  book: n => `書目/${n}.md`,
+};
+
+/* ───────── 可編輯段落與寫作引導 ───────── */
+const EDIT = {
+  "格": [
+    ["古籍摘記", "《紫微斗數全書》哪幾句講到這個命宮組合？抄下原文並註明出處，例如〈諸星問答論〉。"],
+    ["慧心齋主觀點", "用自己的話摘要書中的說法，註明頁碼，不要整段照抄。"],
+    ["我的心得與驗證", "這格和鏡像格差在哪？古訣你同意嗎？認識的人裡有沒有這個命宮可以對照？還有什麼疑問？"],
+  ],
+  "格局": [
+    ["古籍原文摘記", "古訣出自哪一篇？前後文怎麼說？各刊本文字有沒有出入？"],
+    ["慧心齋主觀點", "書中怎麼看這個格局？成格條件寬或嚴？"],
+    ["我的心得", "這個格局出現在哪幾格？為什麼是這幾格？有沒有破格的條件？"],
+  ],
+  "主星": [
+    ["古籍（諸星問答論等）", "《全書》〈諸星問答論〉怎麼描述這顆星？"],
+    ["慧心齋主觀點", "書中這顆星的性情、系列、喜忌。"],
+    ["我的心得", "用三個關鍵詞形容這顆星；它和哪顆星同宮時變化最大？"],
+  ],
+};
+const DEFAULT_KIND_SECTIONS = [["我的心得", "寫下你的想法。"]];
+const STATUS = ["未讀", "研讀中", "已完成"];
+
+/* ───────── 範本 ───────── */
+const L = (n, alias) => alias ? `[[${n}|${alias}]]` : `[[${n}]]`;
+const starsLinks = a => a.length ? a.map(s => L(s)).join("・") : "（空宮）";
+const yl = a => "[" + a.join(", ") + "]";
+const clean = s => s.replace(/\n{3,}/g, "\n\n").trimEnd() + "\n";
+
+function anheLine(c) {
+  const b = c.anhe, pi = mod(c.m - b);
+  const br = c.stars.filter(x => PARTNER[x]).map(x => `${x}—${PARTNER[x]}`);
+  return `${BR[b]}宮（${PAL[pi]}）${starsLinks(c.anheStars)}` + (br.length ? `；永久暗合橋 ${br.join("、")}` : "") + "，見 [[暗合]]";
+}
+
+function cellNote(c) {
+  const { t, m } = c, twin = twinOf(c), T = c.tri;
+  const A = c.pats.filter(k => PK[k].cls === "A"), B = c.pats.filter(k => PK[k].cls === "B");
+  const sib = CELLS.filter(x => x.id !== c.id && x.id !== twin.id &&
+    ((c.stars.length && x.combo === c.combo) || (!c.stars.length && !x.stars.length && x.borrow.join() === c.borrow.join())));
+  const no = (t - 1) * 12 + m + 1;
+  const ming = c.stars.length ? starsLinks(c.stars) : `無正曜，借遷移 ${starsLinks(c.borrow)}`;
+  const aLines = A.map(k => `- ${L(pfile(PK[k]))}：${PK[k].cond}` + (PK[k].quote ? `　「${PK[k].quote}」` : "")).join("\n") || "- 無";
+  const bLines = B.map(k => `- ${L(pfile(PK[k]))}：還需${PK[k].need}`).join("\n") || "- 無";
+  return clean(`---
+title: ${cname(c)}
+類型: 格
+表號: ${t}
+紫微: ${BR[t - 1]}
+命宮: ${BR[m]}
+格號: ${no}
+主星: ${yl(c.stars)}
+組合: ${c.combo}
+財帛: ${yl(T["財"])}
+事業: ${yl(T["官"])}
+遷移: ${yl(T["遷"])}
+格局: ${yl(A.map(k => pfile(PK[k])))}
+待成格: ${yl(B.map(k => pfile(PK[k])))}
+鏡像格: "[[${cname(twin)}]]"
+暗合宮: ${BR[c.anhe]}
+暗合星: ${yl(c.anheStars)}
+生成碼: "${c.code}"
+狀態: 未讀
+tags: [紫微144格]
+---
+
+# 表${t}・命${BR[m]}　${c.stars.join("・") || "命無正曜"}
+
+> [!info] 盤面（第 ${no} 格／144）
+> 紫微在${BR[t - 1]}，命宮${BR[m]}：${ming}
+> 財帛${BR[mod(m + 8)]} ${starsLinks(T["財"])}｜事業${BR[mod(m + 4)]} ${starsLinks(T["官"])}｜遷移${BR[mod(m + 6)]} ${starsLinks(T["遷"])}
+> 生成碼 \`${c.code}\`（貼到萬用命盤產生器，可疊加四化與吉煞）
+
+## 格局
+已成格（主星即可判定）：
+${aLines}
+
+待成格（主星條件已具）：
+${bLines}
+
+## 對照
+- 鏡像格：[[${cname(twin)}]]（主星佈局相同、地支差 6）
+- 暗合宮：${anheLine(c)}
+- 同組合：${sib.map(x => `[[${cname(x)}]]`).join("、") || "無"}
+- 本表：[[${tname(t)}]]
+
+## 古籍摘記
+
+
+## 慧心齋主觀點
+出處：[[慧心齋主談命宮]] 頁
+
+
+## 我的心得與驗證
+
+`);
+}
+
+const DIV = [[5,6,7,8],[4,null,null,9],[3,null,null,10],[2,1,0,11]];
+function tableNote(t) {
+  const P = TABLES[t - 1];
+  const rows = DIV.map((r, ri) => "| " + r.map((b, k) => {
+    if (b === null) return ri === 1 && k === 1 ? `表${t}` : " ";
+    const c = CELL[cellId(t, b)];
+    const st = P[b].length ? P[b].join("・") : `（${P[mod(b + 6)].join("・")}）`;
+    return `[[${cname(c)}\\|${BR[b]}]] ${st}`;
+  }).join(" | ") + " |");
+  const grid = "| 　 | 　 | 　 | 　 |\n|---|---|---|---|\n" + rows.join("\n");
+  const patLines = [];
+  for (let m = 0; m < 12; m++) {
+    const c = CELL[cellId(t, m)];
+    for (const k of c.pats) {
+      const p = PK[k];
+      if (QUIET.has(k)) continue;
+      if (p.cls === "A" || (p.cls === "B" && p.occ.length <= 4))
+        patLines.push(`- 命${BR[m]}：${L(pfile(p))}${p.cls === "B" ? "（待成格，還需" + p.need + "）" : ""}`);
+    }
+  }
+  const lst = Array.from({ length: 12 }, (_, m) => { const c = CELL[cellId(t, m)]; return `- [[${cname(c)}]]　${c.combo}`; }).join("\n");
+  const empt = [...BR].filter((_, b) => !P[b].length);
+  return clean(`---
+title: ${tname(t)}
+類型: 表
+表號: ${t}
+紫微: ${BR[t - 1]}
+天府: ${BR[mod(4 - (t - 1))]}
+空宮: ${yl(empt)}
+tags: [紫微144格]
+---
+# 表${t}　紫微在${BR[t - 1]}
+
+天府在${BR[mod(4 - (t - 1))]}。空宮：${empt.join("、") || "無"}。鏡像表：[[${tname((t + 5) % 12 + 1)}]]。
+
+${grid}
+
+## 本表格局
+${patLines.join("\n") || "- 本表以主星判定的古籍格局不多"}
+
+## 十二格
+${lst}
+
+## 本表進度
+（需 Obsidian 的 Dataview 外掛；沒裝也沒關係，研習頁的「144 格總覽」也看得到進度）
+\`\`\`dataview
+TABLE WITHOUT ID file.link AS 格, 組合, 格局, 狀態
+FROM #紫微144格
+WHERE 類型 = "格" AND 表號 = ${t}
+SORT 格號 ASC
+\`\`\`
+
+## 我的心得
+
+`);
+}
+
+function patNote(p) {
+  const occ = p.occ;
+  let where;
+  if (p.cls === "C") where = "純輔煞四化格局，十二表無法判定，請在萬用命盤產生器第 4 圖層確認。";
+  else {
+    const by = {};
+    occ.forEach(i => (by[+i.slice(0, 2)] ||= []).push(`[[${cname(CELL[i])}]]`));
+    where = Object.keys(by).sort((a, b) => a - b).map(t => `- [[${tname(+t)}]]：${by[t].join("、")}`).join("\n") || "- 無";
+  }
+  const st = STRUCT_NOTE[p.key] ? `\n## 結構觀察\n- ${STRUCT_NOTE[p.key]}\n` : "";
+  const lvl = { A: "A 主星與地支即可判定", B: "B 主星條件已具，尚需輔星／煞星／年干", C: "C 純輔煞四化" }[p.cls];
+  return clean(`---
+title: ${pfile(p)}
+類型: 格局
+層級: ${p.cls}
+類別: ${p.kind}
+別名: ${yl(p.alias ? [p.alias] : [])}
+出現格數: ${occ.length}
+tags: [紫微格局]
+---
+# ${p.name}
+
+- 層級：${lvl}
+- 類別：${p.kind}
+- 成立條件：${p.cond}
+${p.need ? "- 還需：" + p.need : ""}
+${p.quote ? "- 古訣：「" + p.quote + "」" : ""}
+${p.note ? "- 備註：" + p.note : ""}
+
+## 出現位置（${occ.length} 格）
+${where}
+${st}
+## 古籍原文摘記
+
+
+## 慧心齋主觀點
+
+
+## 我的心得
+
+`).replace(/\n- \n/g, "\n");
+}
+
+function patIndexNote(date) {
+  const rows = [];
+  for (const cls of "ABC") {
+    rows.push(`\n## ${cls === "A" ? "A 主星與地支即可判定" : cls === "B" ? "B 主星條件已具，尚需輔星" : "C 純輔煞四化"}\n\n| 格局 | 類別 | 成立條件 | 古訣 | 格數 |\n|---|---|---|---|---|`);
+    for (const p of PATS) {
+      if (p.cls !== cls) continue;
+      const cond = p.cond + (p.need ? `；還需${p.need}` : "");
+      rows.push(`| [[${pfile(p)}]] | ${p.kind} | ${cond} | ${p.quote ? "「" + p.quote + "」" : ""} | ${cls !== "C" ? p.occ.length : "—"} |`);
+    }
+  }
+  return clean(`---
+title: 格局總表
+類型: 索引
+tags: [紫微格局]
+---
+# 格局總表
+
+以《紫微斗數全書》通行本為底，把格局寫成十二表上的判定式，由程式窮舉 144 格（${date}）。廟陷依通行日月廟陷表。
+` + rows.join("\n"));
+}
+
+function starNote(s) {
+  const S = STARS[s];
+  const seats = CELLS.filter(c => c.stars.includes(s));
+  const hl = Object.entries(SIHUA).flatMap(([g, a]) => a.map((x, i) => x === s ? `${g}化${"祿權科忌"[i]}` : null)).filter(Boolean).join("、") || "不參與生年四化";
+  const combos = {};
+  seats.forEach(c => (combos[c.combo] ||= []).push(`[[${cname(c)}]]`));
+  const pats = [...new Set(seats.flatMap(c => c.pats.filter(k => PK[k].cls === "A" && !QUIET.has(k)).map(k => pfile(PK[k]))))].sort();
+  return clean(`---
+title: ${s}
+類型: 主星
+系列: ${S.grp === 1 ? "第一系列" : "第二／三系列（分組待依《談命宮》確認）"}
+斗分: ${S.dou}
+五行: ${S.wx}
+化氣: ${S.hua}
+tags: [紫微主星]
+---
+# ${s}
+
+${S.dou}・${S.wx}・${S.hua}
+
+${S.kw}
+
+- 生年四化：${hl}
+- 永久暗合夥伴：${PARTNER[s] ? "[[" + PARTNER[s] + "]]（十二表中恆在本星的暗合宮）" : "無（見 [[暗合]]）"}
+- 坐命 ${seats.length} 格
+${Object.entries(combos).map(([k, v]) => `  - ${k}：` + v.join("、")).join("\n")}
+- 坐命可成之格：${pats.map(x => `[[${x}]]`).join("、") || "無"}
+
+## 古籍（諸星問答論等）
+
+
+## 慧心齋主觀點
+出處：[[慧心齋主談命宮]]、[[紫微斗數新詮 四十周年增訂版]]
+
+
+## 我的心得
+
+`);
+}
+
+function bookNote([n, pub, y, isbn, use]) {
+  return clean(`---
+title: ${n}
+類型: 書目
+出版: ${pub}
+年份: ${y}
+ISBN: "${isbn}"
+tags: [紫微書目]
+---
+# ${n}
+
+- 出版：${pub}（${y}）
+- ISBN：${isbn}
+- 用途：${use}
+
+## 讀書進度
+
+
+## 引用此書的筆記
+\`\`\`dataview
+LIST FROM [[${n}]] WHERE 類型 = "格" OR 類型 = "格局" OR 類型 = "主星"
+\`\`\`
+
+## 我的心得
+
+`);
+}
+
+function readmeNote() {
+  return clean(`---
+title: 紫微斗數研習
+tags: [紫微144格]
+---
+# 紫微斗數研習
+
+以古籍與慧心齋主著作為本，按十二表 × 十二命宮共 144 格逐格研讀，並對照古籍格局。
+
+這個資料夾是「紫微研習包」的筆記本體。平常用研習頁（\`紫微研習.html\`）讀和寫就好；想要雙向連結，可以用 Obsidian 開啟這個資料夾。操作說明見 [[使用說明]]。
+
+## 結構
+- \`144格/\`：十二表各一資料夾，內含表索引（4×4 盤面、本表格局）與 12 則格筆記
+- \`格局/\`：每個格局一則，列出現位置；總覽見 [[格局總表]]
+- [[暗合]]：暗合宮概念、五永久暗合橋
+- \`十四主星/\`：每顆主星一則
+- \`書目/\`：慧心齋主著作與古籍
+
+## 學習路徑
+1. 十四主星本性：[[紫微]] 起，對照《全書》諸星問答論與 [[紫微斗數新詮 四十周年增訂版]]。
+2. 十二表結構：表號＝紫微所在地支，對照 [[慧心齋主談星際關係]] 書末基礎命盤表。
+3. 逐表逐格：先看表索引的「本表格局」，再從命子讀到命亥；命宮以 [[慧心齋主談命宮]] 為主。
+4. 鏡像對讀：表1↔表7、表2↔表8……，比較地支型格局的差異。
+5. 每讀完一表，回 [[格局總表]] 核對古訣；B 類格局到萬用命盤產生器第 4 圖層疊加輔星確認。
+6. 疊加四化與宮位：[[紫微四化星]]、[[慧心齋主談星際關係]]。
+
+## 十二表
+${Array.from({ length: 12 }, (_, i) => `- [[${tname(i + 1)}]]`).join("\n")}
+
+## 進度
+（需 Obsidian 的 Dataview 外掛）
+\`\`\`dataview
+TABLE WITHOUT ID 表號 AS 表, length(rows) AS 格數, length(filter(rows.狀態, (s) => s = "研讀中")) AS 研讀中, length(filter(rows.狀態, (s) => s = "已完成")) AS 已完成
+FROM #紫微144格
+WHERE 類型 = "格"
+GROUP BY 表號
+SORT 表號 ASC
+\`\`\`
+`);
+}
+
+function anheNote() {
+  const pairs = [0,2,3,4,5,6].map(i => `${BR[i]}${BR[mod(1 - i)]}`).join("、");
+  const bridges = BRIDGES.map(([a, b]) => `- [[${a}]]—[[${b}]]`).join("\n");
+  const lonely = ORDER.filter(s => !PARTNER[s]).map(s => `[[${s}]]`).join("、");
+  const dist = Array.from({ length: 12 }, (_, m) => `| ${BR[m]} | ${BR[mod(1 - m)]} | ${PAL[mod(2 * m - 1)]} |`).join("\n");
+  return clean(`---
+title: 暗合
+類型: 概念
+tags: [紫微概念]
+---
+# 暗合
+
+## 定義
+暗合宮即地支六合：把命盤左右對摺，相對的兩宮互為暗合，共六對：${pairs}。換成支序就是 p＋q ≡ 1 (mod 12)。
+
+## 實務用法
+- 論一宮時，除了對宮，也參考它的暗合宮，看「暗中的牽動、想法或助力」。
+- 祿、科在暗合宮與本宮之間成立的格局：[[明祿暗祿]]、[[科明祿暗]]。
+
+## 命宮的暗合宮落在哪一宮
+暗合依地支，不依宮名，所以命宮的暗合宮會隨命宮地支改變：
+
+| 命宮 | 暗合宮 | 是命盤的哪一宮 |
+|---|---|---|
+${dist}
+
+命宮的暗合宮只會是兄弟、子女、疾厄、交友、田宅、父母這六宮（宮序差恆為奇數），永遠不是夫妻、財帛、遷移、事業、福德。
+
+## 五永久暗合橋
+十二表中位置和恆 ≡ 1、永遠互在對方暗合宮的星對（程式窮舉驗證）：
+${bridges}
+
+沒有永久暗合夥伴的星：${lonely}。
+
+## 我的心得
+
+`);
+}
+
+function guideNote() {
+  return clean(`---
+title: 使用說明
+類型: 說明
+tags: [紫微144格]
+---
+# 使用說明
+
+## 最簡單的用法
+1. 雙擊資料夾裡的 \`紫微研習.html\`，用瀏覽器打開（建議 Chrome 或 Edge）。
+2. 第一次使用，到「筆記與備份」按「選擇筆記資料夾」，選這個 \`筆記\` 資料夾。之後寫的筆記會直接存進來。
+3. 在「逐格研讀」選表號與命宮，看盤面、格局，在下方寫筆記。打字會自動存檔。
+4. 讀完一格，把狀態改成「研讀中」或「已完成」，「開始」頁會顯示進度和下一格。
+
+用 Safari 或 Firefox 的話，筆記會存在瀏覽器裡。請記得常按「匯出備份」，換電腦時再「匯入」。
+
+## 每一格怎麼讀
+- **古籍摘記**：《紫微斗數全書》賦文、諸星問答論相關句，註明篇名。
+- **慧心齋主觀點**：以《慧心齋主談命宮》為主，用自己的話摘要並註頁碼，不整段抄錄。
+- **我的心得與驗證**：疑問、實例、和鏡像格的比較。
+
+## 建議順序
+十四主星 → 表一逐格（命子到命亥）→ 鏡像表七 → 表二↔表八 …… 共六對。每讀完一表，回 [[格局總表]] 核對古訣，再讀 [[暗合]]。研習頁的「今日一格」會照這個順序帶你走。
+
+## 練習
+研習頁的「練習」分頁會出題：某格命宮坐什麼星、成什麼格、鏡像格是哪一格。答錯的題目之後會再出現。
+
+## 搬家與備份
+- 整個「紫微研習包」資料夾複製或壓縮帶走即可，筆記就在 \`筆記\` 裡。
+- 到新電腦打開後，重新「選擇筆記資料夾」一次。
+
+## 進階：用 Obsidian
+用 Obsidian「開啟資料夾作為 vault」選這個 \`筆記\` 資料夾，就能用雙向連結瀏覽。表索引和 README 的進度表需要 Dataview 外掛（可不裝）。Obsidian 和研習頁改的是同一批檔案，不要兩邊同時改同一則筆記。
+
+## 注意
+- 古訣各刊本文字略異，格局寬嚴各家不同，已在各格局筆記的備註說明。
+- 「探花格」「狀元格」等屬後世通稱，《全書》未見。
+`);
+}
+
+/** 產生整個筆記資料夾：[{path, text}] */
+function allNotes(date) {
+  const out = [];
+  CELLS.forEach(c => out.push({ path: PATH.cell(c), text: cellNote(c) }));
+  for (let t = 1; t <= 12; t++) out.push({ path: PATH.table(t), text: tableNote(t) });
+  PATS.forEach(p => out.push({ path: PATH.pat(p), text: patNote(p) }));
+  out.push({ path: "格局總表.md", text: patIndexNote(date) });
+  ORDER.forEach(s => out.push({ path: PATH.star(s), text: starNote(s) }));
+  BOOKS.forEach(b => out.push({ path: PATH.book(b[0]), text: bookNote(b) }));
+  out.push({ path: "README.md", text: readmeNote() });
+  out.push({ path: "暗合.md", text: anheNote() });
+  out.push({ path: "使用說明.md", text: guideNote() });
+  return out;
+}
+
+/* ───────── frontmatter 與段落 ───────── */
+function getFront(md, key) {
+  const fm = /^---\n([\s\S]*?)\n---/.exec(md || "");
+  if (!fm) return "";
+  const r = new RegExp("^" + key + ":[ \\t]*(.*)$", "m").exec(fm[1]);
+  return r ? r[1].trim().replace(/^"(.*)"$/, "$1") : "";
+}
+function setFront(md, key, val) {
+  const fm = /^---\n([\s\S]*?)\n---/.exec(md);
+  if (!fm) return `---\n${key}: ${val}\n---\n` + md;
+  const re = new RegExp("^" + key + ":.*$", "m");
+  const body = re.test(fm[1]) ? fm[1].replace(re, `${key}: ${val}`) : fm[1] + `\n${key}: ${val}`;
+  return "---\n" + body + "\n---" + md.slice(fm[0].length);
+}
+function sectionRange(md, name) {
+  const lines = md.split("\n");
+  const start = lines.findIndex(l => l.trim() === "## " + name);
+  if (start < 0) return null;
+  let end = lines.length;
+  for (let i = start + 1; i < lines.length; i++) if (/^#{1,2} /.test(lines[i])) { end = i; break; }
+  return { lines, start, end };
+}
+function getSection(md, name) {
+  const r = sectionRange(md || "", name);
+  return r ? r.lines.slice(r.start + 1, r.end).join("\n").trim() : "";
+}
+function setSection(md, name, body) {
+  const r = sectionRange(md, name);
+  const block = ["", ...(body.trim() ? [body.trim(), ""] : [""])];
+  if (!r) return md.trimEnd() + `\n\n## ${name}\n` + block.join("\n") + "\n";
+  const out = [...r.lines.slice(0, r.start + 1), ...block, ...r.lines.slice(r.end)];
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd() + "\n";
+}
+function sectionsOf(md) {
+  return EDIT[getFront(md, "類型")] || DEFAULT_KIND_SECTIONS.filter(([n]) => sectionRange(md, n));
+}
+/** 把 incoming 併進 base：空的段落直接補上；兩邊都有且不同時，附在後面，不覆蓋任何文字 */
+function mergeNote(base, incoming, tag) {
+  let out = base, changed = false;
+  for (const [n] of sectionsOf(base)) {
+    const cur = getSection(base, n), inc = getSection(incoming, n);
+    if (!inc || inc === cur || cur.includes(inc)) continue;
+    const curEmpty = !cur || /^出處：[^\n]*$/.test(cur);
+    out = setSection(out, n, curEmpty && (!cur || inc.startsWith("出處")) ? inc : cur + `\n\n---\n（${tag}）\n` + inc);
+    changed = true;
+  }
+  const sa = getFront(base, "狀態"), sb = getFront(incoming, "狀態");
+  if (sa && sb && STATUS.indexOf(sb) > STATUS.indexOf(sa)) { out = setFront(out, "狀態", sb); changed = true; }
+  return { text: out, changed };
+}
+
+/* ───────── zip（只存不壓縮；讀取支援 deflate） ───────── */
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+function crc32(u8) { let c = 0xFFFFFFFF; for (let i = 0; i < u8.length; i++) c = CRC[(c ^ u8[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function makeZip(files, when = new Date()) {   // files: [{path, data: string|Uint8Array}]
+  const enc = new TextEncoder(), parts = [], central = [];
+  const time = (when.getHours() << 11) | (when.getMinutes() << 5) | (when.getSeconds() >> 1);
+  const date = ((when.getFullYear() - 1980) << 9) | ((when.getMonth() + 1) << 5) | when.getDate();
+  let off = 0;
+  for (const f of files) {
+    const name = enc.encode(f.path), data = typeof f.data === "string" ? enc.encode(f.data) : f.data, crc = crc32(data);
+    const h = new DataView(new ArrayBuffer(30));
+    h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true); h.setUint16(8, 0, true);
+    h.setUint16(10, time, true); h.setUint16(12, date, true); h.setUint32(14, crc, true);
+    h.setUint32(18, data.length, true); h.setUint32(22, data.length, true); h.setUint16(26, name.length, true); h.setUint16(28, 0, true);
+    parts.push(new Uint8Array(h.buffer), name, data);
+    const c = new DataView(new ArrayBuffer(46));
+    c.setUint32(0, 0x02014b50, true); c.setUint16(4, 20, true); c.setUint16(6, 20, true); c.setUint16(8, 0x0800, true); c.setUint16(10, 0, true);
+    c.setUint16(12, time, true); c.setUint16(14, date, true); c.setUint32(16, crc, true); c.setUint32(20, data.length, true); c.setUint32(24, data.length, true);
+    c.setUint16(28, name.length, true); c.setUint32(42, off, true);
+    central.push(new Uint8Array(c.buffer), name);
+    off += 30 + name.length + data.length;
+  }
+  const cdSize = central.reduce((s, a) => s + a.length, 0);
+  const e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true);
+  e.setUint32(12, cdSize, true); e.setUint32(16, off, true);
+  const all = [...parts, ...central, new Uint8Array(e.buffer)], out = new Uint8Array(off + cdSize + 22);
+  let p = 0; for (const a of all) { out.set(a, p); p += a.length; }
+  return out;
+}
+async function readZip(buf) {   // → [{path, text}]，只取 .md
+  const u8 = new Uint8Array(buf), dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength), dec = new TextDecoder();
+  let e = -1;
+  for (let i = u8.length - 22; i >= Math.max(0, u8.length - 65557); i--) if (dv.getUint32(i, true) === 0x06054b50) { e = i; break; }
+  if (e < 0) throw new Error("不是 zip 檔");
+  const n = dv.getUint16(e + 10, true); let p = dv.getUint32(e + 16, true);
+  const out = [];
+  for (let k = 0; k < n; k++) {
+    const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true);
+    const nl = dv.getUint16(p + 28, true), xl = dv.getUint16(p + 30, true), cl = dv.getUint16(p + 32, true), lo = dv.getUint32(p + 42, true);
+    const path = dec.decode(u8.subarray(p + 46, p + 46 + nl));
+    p += 46 + nl + xl + cl;
+    if (!path.endsWith(".md") || path.includes("__MACOSX") || /(^|\/)\./.test(path)) continue;
+    const ds = lo + 30 + dv.getUint16(lo + 26, true) + dv.getUint16(lo + 28, true);
+    let data = u8.subarray(ds, ds + csize);
+    if (method === 8) data = new Uint8Array(await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer());
+    else if (method !== 0) continue;
+    out.push({ path, text: dec.decode(data) });
+  }
+  return out;
+}
+/** 把匯入檔案的路徑對齊到「筆記」資料夾的相對路徑 */
+function normalizeImportPath(p) {
+  p = p.replace(/\\/g, "/");
+  const i = p.indexOf("筆記/");
+  if (i >= 0) return p.slice(i + 3);
+  for (const top of ["144格/", "格局/", "十四主星/", "書目/"]) { const j = p.indexOf(top); if (j >= 0) return p.slice(j); }
+  return p.split("/").pop();
+}
+
+const api = { BR, PAL, ORDER, SHORT, TABLES, CELLS, CELL, PATS, PK, BRIDGES, PARTNER, QUIET, SIHUA, STARS, BOOKS, DIV, EDIT, STATUS,
+  mod, pad, cellId, twinOf, tname, cname, pfile, shortName, label, PATH,
+  cellNote, tableNote, patNote, starNote, allNotes,
+  getFront, setFront, getSection, setSection, sectionsOf, mergeNote, makeZip, readZip, normalizeImportPath };
+if (typeof module !== "undefined" && module.exports) module.exports = api; else root.ZW = api;
+})(typeof globalThis !== "undefined" ? globalThis : this);
+
+</script>
+<script>
+/* 紫微研習包介面：看盤、寫筆記、進度、練習、備份。資料與範本來自 core.js（window.ZW）。 */
+"use strict";
+const Z = window.ZW;
+const { BR, PAL, CELL, CELLS, PK, PATS, PARTNER, QUIET, DIV, TABLES, STARS, SIHUA, ORDER, BRIDGES } = Z;
+const CFG = Object.assign({
+  notesDir: "筆記",
+  chartTool: "萬用命盤產生器.html",
+  chartToolOnline: "https://ericckfeng.github.io/ziwei-astrology-tool/",
+}, window.ZIWEI_CONFIG || {});
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ymd = d => `${d.getFullYear()}-${Z.pad(d.getMonth() + 1)}-${Z.pad(d.getDate())}`;
+const hm = d => `${Z.pad(d.getHours())}:${Z.pad(d.getMinutes())}`;
+const id2 = Z.cellId, label = Z.label, short = Z.shortName;
+const starsTxt = a => a.join("・");
+const cellNo = c => (c.t - 1) * 12 + c.m + 1;
+const isA = k => PK[k].cls === "A" && !QUIET.has(k);
+const isB = k => PK[k].cls === "B" && PK[k].occ.length <= 4;   // 只標地支有限的 B 類
+const rand = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const sample = (a, n) => shuffle(a).slice(0, n);
+const ONLINE = location.protocol !== "file:";   // 從網站開啟（GitHub Pages），而不是研習包裡的檔案
+const PATH_ORDER = [1, 7, 2, 8, 3, 9, 4, 10, 5, 11, 6, 12].flatMap(t => Array.from({ length: 12 }, (_, m) => CELL[id2(t, m)]));
+
+/* ───────── 瀏覽器儲存（IndexedDB，失敗時退回記憶體） ───────── */
+const DB = (() => {
+  let db = null; const mem = { kv: new Map(), notes: new Map(), mirror: new Map() };
+  const open = () => new Promise(res => {
+    try {
+      const r = indexedDB.open("ziwei-study-pack", 1);
+      r.onupgradeneeded = () => ["kv", "notes", "mirror"].forEach(n => r.result.createObjectStore(n));
+      r.onsuccess = () => { db = r.result; res(true); };
+      r.onerror = () => res(false);
+    } catch { res(false); }
+  });
+  const run = (st, mode, fn) => new Promise((res, rej) => {
+    const t = db.transaction(st, mode), r = fn(t.objectStore(st));
+    t.oncomplete = () => res(r && r.result); t.onerror = () => rej(t.error);
+  });
+  return {
+    open,
+    get: (st, k) => db ? run(st, "readonly", s => s.get(k)) : Promise.resolve(mem[st].get(k)),
+    set: (st, k, v) => db ? run(st, "readwrite", s => s.put(v, k)) : (mem[st].set(k, v), Promise.resolve()),
+    del: (st, k) => db ? run(st, "readwrite", s => s.delete(k)) : (mem[st].delete(k), Promise.resolve()),
+    replaceAll: (st, entries) => db ? run(st, "readwrite", s => { s.clear(); for (const [k, v] of entries) s.put(v, k); }) : (mem[st] = new Map(entries), Promise.resolve()),
+    entries: st => db ? new Promise((res, rej) => {
+      const out = [], r = db.transaction(st).objectStore(st).openCursor();
+      r.onsuccess = () => { const c = r.result; if (c) { out.push([c.key, c.value]); c.continue(); } else res(out); };
+      r.onerror = () => rej(r.error);
+    }) : Promise.resolve([...mem[st]]),
+  };
+})();
+
+/* ───────── 筆記存取：資料夾模式（Chrome／Edge）或瀏覽器模式 ───────── */
+const S = { mode: "browser", dir: null, perm: false, lost: false, notes: new Map(), tpl: null, storageOK: true,
+  canFolder: "showDirectoryPicker" in window, lastBackup: 0, lastSave: null, saveErr: "" };
+const tpl = () => S.tpl || (S.tpl = new Map(Z.allNotes(ymd(new Date())).map(f => [f.path, f.text])));
+const noteText = p => S.notes.get(p) ?? tpl().get(p) ?? "";
+const statusOf = c => Z.getFront(S.notes.get(Z.PATH.cell(c)) || "", "狀態") || "未讀";
+const editable = () => S.mode === "browser" || S.perm;
+
+async function walk(dir, prefix = "", out = new Map()) {
+  for await (const [name, h] of dir.entries()) {
+    if (name.startsWith(".")) continue;
+    if (h.kind === "directory") await walk(h, prefix + name + "/", out);
+    else if (name.endsWith(".md")) out.set(prefix + name, await (await h.getFile()).text());
+  }
+  return out;
+}
+async function fileHandle(path, create) {
+  const parts = path.split("/"); let d = S.dir;
+  for (const p of parts.slice(0, -1)) d = await d.getDirectoryHandle(p, { create });
+  return d.getFileHandle(parts[parts.length - 1], { create });
+}
+async function readFile(path) { try { return await (await (await fileHandle(path, false)).getFile()).text(); } catch { return null; } }
+async function writeFile(path, text) { const w = await (await fileHandle(path, true)).createWritable(); await w.write(text); await w.close(); }
+async function hasEntry(dir, name) { try { await dir.getDirectoryHandle(name); return true; } catch { return false; } }
+
+async function loadFolder() {
+  S.notes = await walk(S.dir);
+  S.lost = false;
+  await DB.replaceAll("mirror", [...S.notes]).catch(() => {});
+}
+async function persist(path, text) {
+  if (S.mode === "folder") {
+    if (!S.perm) throw new Error("資料夾未連接");
+    await writeFile(path, text);
+    DB.set("mirror", path, text).catch(() => {});
+  } else await DB.set("notes", path, text);
+  S.notes.set(path, text);
+}
+let chain = Promise.resolve();
+const queue = fn => (chain = chain.then(fn, fn));
+function saveNote(path, { sections = {}, status } = {}) {
+  return queue(async () => {
+    let base = S.mode === "folder" ? await readFile(path) : S.notes.get(path);   // 先讀最新檔案，保留 Obsidian 那邊的修改
+    if (base == null) base = tpl().get(path);
+    let t = base;
+    for (const [n, v] of Object.entries(sections)) t = Z.setSection(t, n, v);
+    if (status) t = Z.setFront(t, "狀態", status);
+    try { await persist(path, t); S.lastSave = new Date(); S.saveErr = ""; }
+    catch (e) { S.saveErr = "沒有存到：" + (e.message || e); if (S.mode === "folder") { S.perm = false; S.lost = true; renderBanner(); } }
+    updateSaved();
+  });
+}
+async function fillMissing(paths) {
+  for (const p of paths) await persist(p, tpl().get(p));
+  return paths.length;
+}
+async function importNotes(list, tag) {
+  let added = 0, merged = 0;
+  for (const { path, text } of list) {
+    const p = Z.normalizeImportPath(path);
+    if (!p.endsWith(".md") || !text) continue;
+    const cur = S.mode === "folder" ? await readFile(p) : S.notes.get(p);
+    if (cur == null) { await persist(p, text); added++; continue; }
+    const r = Z.mergeNote(cur, text, tag);
+    if (r.changed) { await persist(p, r.text); merged++; }
+  }
+  return { added, merged };
+}
+
+async function boot() {
+  S.storageOK = await DB.open();
+  S.lastBackup = (await DB.get("kv", "lastBackup").catch(() => 0)) || 0;
+  const dir = S.canFolder ? await DB.get("kv", "dir").catch(() => null) : null;
+  if (dir) {
+    S.mode = "folder"; S.dir = dir;
+    let p = "prompt"; try { p = await dir.queryPermission({ mode: "readwrite" }); } catch {}
+    if (p === "granted") { try { await loadFolder(); S.perm = true; } catch { S.lost = true; } }
+    if (!S.perm) S.notes = new Map(await DB.entries("mirror").catch(() => []));
+  } else S.notes = new Map(await DB.entries("notes").catch(() => []));
+  const last = await DB.get("kv", "cur").catch(() => null);
+  if (last && CELL[last]) cur = { t: CELL[last].t, m: CELL[last].m };
+}
+async function reconnect() {
+  try {
+    if ((await S.dir.requestPermission({ mode: "readwrite" })) !== "granted") return;
+    await loadFolder(); S.perm = true; refresh(); toast(`已連接「${S.dir.name}」`);
+  } catch { S.lost = true; renderBanner(); toast("找不到這個資料夾，可能已經搬走，請重新選擇"); }
+}
+async function chooseFolder() {
+  if (!S.canFolder) {
+    await ask("這個瀏覽器不能直接存到資料夾", "請改用 Chrome 或 Edge 打開研習頁。用 Safari、Firefox 也可以讀寫，筆記會存在瀏覽器裡，記得常按「匯出備份」。", [["知道了", 1]]);
+    return;
+  }
+  let h; try { h = await window.showDirectoryPicker({ id: "ziwei-notes", mode: "readwrite" }); } catch { return; }
+  if (!(await hasEntry(h, "144格")) && await hasEntry(h, CFG.notesDir)) h = await h.getDirectoryHandle(CFG.notesDir);   // 選到研習包上層時，自動進入「筆記」
+  const fromBrowser = S.mode === "browser" ? [...S.notes] : [];
+  S.dir = h; S.mode = "folder"; S.perm = true;
+  await DB.set("kv", "dir", h).catch(() => {});
+  await loadFolder();
+  const missing = [...tpl().keys()].filter(p => !S.notes.has(p));
+  if (missing.length === tpl().size) {
+    const ok = await ask("這個資料夾裡還沒有筆記", `要在「${esc(h.name)}」裡建立全部 ${missing.length} 則筆記嗎？<br>如果選錯資料夾，按「先不要」再重新選。`, [["建立筆記", 1], ["先不要", 0]]);
+    if (ok === 0) await fillMissing(missing);
+  } else if (missing.length) await fillMissing(missing);   // 只補缺少的檔案，不覆蓋
+  if (fromBrowser.length) {
+    const ok = await ask("要把瀏覽器裡的筆記搬進資料夾嗎？", `這個瀏覽器裡已經有 ${fromBrowser.length} 則筆記。合併時，空白的段落會補上；兩邊都寫了的段落會接在後面，不會蓋掉任何文字。`, [["合併進資料夾", 1], ["不要", 0]]);
+    if (ok === 0) { const r = await importNotes(fromBrowser.map(([path, text]) => ({ path, text })), "瀏覽器裡的版本"); toast(`已合併 ${r.merged + r.added} 則`); }
+  }
+  refresh(); toast(`已連接筆記資料夾「${h.name}」`);
+}
+async function useBrowser() {
+  const ok = await ask("改回存在瀏覽器？", "研習頁會停止寫入資料夾，資料夾裡的檔案不會被刪除。之後寫的筆記會存在這個瀏覽器裡。", [["改回瀏覽器", 1], ["取消", 0]]);
+  if (ok !== 0) return;
+  await DB.del("kv", "dir").catch(() => {});
+  S.mode = "browser"; S.dir = null; S.perm = false; S.lost = false;
+  S.notes = new Map(await DB.entries("notes").catch(() => []));
+  refresh();
+}
+function download(blob, name) {
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function exportZip() {
+  const files = [], seen = new Set();
+  for (const [p, t] of tpl()) { files.push({ path: CFG.notesDir + "/" + p, data: S.notes.get(p) ?? t }); seen.add(p); }
+  for (const [p, t] of S.notes) if (!seen.has(p)) files.push({ path: CFG.notesDir + "/" + p, data: t });
+  download(new Blob([Z.makeZip(files)], { type: "application/zip" }), `紫微筆記備份-${ymd(new Date())}.zip`);
+  S.lastBackup = Date.now(); await DB.set("kv", "lastBackup", S.lastBackup).catch(() => {});
+  renderBanner(); if (view() === "backup") renderBackup();
+  toast("已下載備份檔，請放在安全的地方");
+}
+async function runImport(list, tag) {
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  if (!list.length) { toast("沒有找到 .md 筆記檔"); return; }
+  const r = await importNotes(list, tag);
+  refresh();
+  await ask("匯入完成", `新增 ${r.added} 則、合併 ${r.merged} 則筆記。兩邊都寫過的段落，匯入的文字接在原文後面，用「（${esc(tag)}）」標示。`, [["好", 1]]);
+}
+
+/* ───────── 小工具：提示與對話框 ───────── */
+let tt; function toast(s) { const t = $("#toast"); t.textContent = s; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2600); }
+function ask(title, html, buttons) {   // buttons: [[文字, 0=主要/1=次要]]，回傳按下的索引，Esc 為 -1
+  return new Promise(res => {
+    const d = document.createElement("div"); d.className = "modal"; d.setAttribute("role", "dialog"); d.setAttribute("aria-modal", "true");
+    d.innerHTML = `<div><h3>${esc(title)}</h3><p>${html}</p><div class="row">${buttons.map(([t, k], i) => `<button class="btn ${k ? "ghost" : ""}" data-i="${i}">${esc(t)}</button>`).join("")}</div></div>`;
+    const done = i => { d.remove(); document.removeEventListener("keydown", key); res(i); };
+    const key = e => { if (e.key === "Escape") done(-1); };
+    d.addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) done(+b.dataset.i); else if (e.target === d) done(-1); });
+    document.addEventListener("keydown", key);
+    document.body.append(d); d.querySelector(".btn").focus();
+  });
+}
+
+/* ───────── 筆記編輯器 ───────── */
+let edSeq = 0;
+function editorHTML(path, title) {
+  const md = noteText(path), secs = Z.sectionsOf(md), isCell = Z.getFront(md, "類型") === "格";
+  const st = Z.getFront(md, "狀態") || "未讀", ro = !editable(), n = ++edSeq;
+  return `<section class="notes" data-path="${esc(path)}">
+    <div class="notes-head"><h2>${esc(title)}</h2>
+      ${isCell ? `<div class="status-pick" role="group" aria-label="研讀狀態">${Z.STATUS.map(s => `<button data-s="${s}" aria-pressed="${s === st}">${s}</button>`).join("")}</div>` : ""}</div>
+    <div class="saved" aria-live="polite">${savedMsg()}</div>
+    ${secs.map(([name, hint], i) => `<div class="field"><label for="ed${n}-${i}">${esc(name)}</label><span class="hint">${esc(hint)}</span><textarea id="ed${n}-${i}" data-sec="${esc(name)}" ${ro ? "readonly" : ""}>${esc(Z.getSection(md, name))}</textarea></div>`).join("")}
+    ${obsLink(path)}
+  </section>`;
+}
+function savedMsg() {
+  if (!editable()) return "筆記資料夾還沒重新連接，暫時不能編輯。請按上方的「繼續」。";
+  if (S.saveErr) return S.saveErr;
+  const where = S.mode === "folder" ? `存到資料夾「${esc(S.dir.name)}」` : "存在這個瀏覽器";
+  return S.lastSave ? `已儲存 ${hm(S.lastSave)}・${where}` : `打字會自動儲存・${where}`;
+}
+function updateSaved() { document.querySelectorAll(".notes .saved").forEach(el => { el.innerHTML = savedMsg(); el.classList.toggle("err", !!S.saveErr || !editable()); }); }
+function obsLink(path) {
+  if (location.protocol !== "file:" || S.mode !== "folder" || !S.dir || S.dir.name !== CFG.notesDir) return "";
+  let base = decodeURIComponent(location.pathname).replace(/\/[^/]*$/, "");
+  if (/^\/[A-Za-z]:/.test(base)) base = base.slice(1);
+  const abs = `${base}/${CFG.notesDir}/${path}`;
+  return `<div class="adv">進階：<a href="obsidian://open?path=${encodeURIComponent(abs)}">在 Obsidian 開啟這則筆記</a>（需先用 Obsidian 開啟「${esc(CFG.notesDir)}」資料夾）</div>`;
+}
+const timers = new Map();
+function flush() { for (const [k, { fn }] of timers) { clearTimeout(timers.get(k).t); fn(); } timers.clear(); }
+document.addEventListener("input", e => {
+  const ta = e.target.closest(".notes textarea[data-sec]"); if (!ta) return;
+  const path = ta.closest(".notes").dataset.path, sec = ta.dataset.sec, k = path + "|" + sec;
+  if (timers.has(k)) clearTimeout(timers.get(k).t);
+  const fn = () => { timers.delete(k); saveNote(path, { sections: { [sec]: ta.value } }); };
+  timers.set(k, { t: setTimeout(fn, 700), fn });
+  document.querySelectorAll(".notes .saved").forEach(el => el.textContent = "輸入中…");
+});
+document.addEventListener("click", async e => {
+  const b = e.target.closest(".status-pick button"); if (!b) return;
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  const box = b.closest(".notes");
+  box.querySelectorAll(".status-pick button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  await saveNote(box.dataset.path, { status: b.dataset.s });
+  toast(b.dataset.s === "已完成" ? "這一格完成了！" : `狀態：${b.dataset.s}`);
+  renderPickers(); renderOverview();
+});
+document.addEventListener("visibilitychange", () => { if (document.hidden) flush(); });
+window.addEventListener("beforeunload", e => { if (timers.size) { flush(); e.preventDefault(); e.returnValue = ""; } });
+let lastFocus = 0;
+window.addEventListener("focus", async () => {   // 從 Obsidian 改完回來時，重新讀檔
+  if (S.mode !== "folder" || !S.perm || timers.size || Date.now() - lastFocus < 3000) return;
+  lastFocus = Date.now();
+  try { await loadFolder(); } catch { return; }
+  document.querySelectorAll(".notes[data-path]").forEach(box => {
+    const md = noteText(box.dataset.path);
+    box.querySelectorAll("textarea[data-sec]").forEach(ta => { const v = Z.getSection(md, ta.dataset.sec); if (ta !== document.activeElement && ta.value !== v) ta.value = v; });
+    const st = Z.getFront(md, "狀態") || "未讀";
+    box.querySelectorAll(".status-pick button").forEach(x => x.setAttribute("aria-pressed", x.dataset.s === st));
+  });
+  if (view() !== "study") rerender();
+});
+function openDrawer(path, title) {
+  flush();
+  const d = document.createElement("div"); d.className = "drawer";
+  d.innerHTML = `<div role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="row" style="justify-content:flex-end;margin-bottom:10px"><button class="btn ghost" data-close>關閉</button></div>${editorHTML(path, title)}</div>`;
+  const close = () => { flush(); d.remove(); document.removeEventListener("keydown", key); };
+  const key = e => { if (e.key === "Escape") close(); };
+  d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-close]")) close(); });
+  document.addEventListener("keydown", key);
+  document.body.append(d); d.querySelector("textarea")?.focus();
+}
+
+/* ───────── 路由 ───────── */
+const VIEWS = ["home", "study", "overview", "patterns", "stars", "quiz", "books", "backup"];
+let cur = { t: 1, m: 0 }, fCls = "all", fKind = "all";
+function view() { const h = location.hash.slice(1); if (/^g\d{4}$/.test(h)) return "study"; return VIEWS.includes(h) ? h : "home"; }
+function route() {
+  flush();
+  const m = /^g(\d{2})(\d{2})$/.exec(location.hash.slice(1));
+  if (m && CELL[m[1] + m[2]]) { cur = { t: +m[1], m: +m[2] }; DB.set("kv", "cur", m[1] + m[2]).catch(() => {}); }
+  const v = view();
+  for (const k of VIEWS) document.getElementById("v-" + k).hidden = k !== v;
+  document.querySelectorAll("nav.tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === v ? "page" : "false"));
+  rerender();
+}
+function rerender() {
+  const v = view();
+  if (v === "home") renderHome();
+  if (v === "study") renderStudy();
+  if (v === "overview") renderOverview();
+  if (v === "patterns") renderPatterns();
+  if (v === "stars") renderStars();
+  if (v === "quiz") renderQuiz();
+  if (v === "backup") renderBackup();
+}
+function refresh() { renderBanner(); rerender(); }
+const go = (t, m) => { location.hash = "g" + id2(t, m); };
+const goId = id => go(CELL[id].t, CELL[id].m);
+window.addEventListener("hashchange", route);
+document.addEventListener("click", e => {
+  const g = e.target.closest("[data-go]"); if (g) { e.preventDefault(); goId(g.dataset.go); }
+  const n = e.target.closest("[data-note]"); if (n) openDrawer(n.dataset.note, n.dataset.title);
+  const a = e.target.closest("[data-act]"); if (a) ACT[a.dataset.act]?.();
+});
+const ACT = { chooseFolder, reconnect, useBrowser, exportZip, importZip: () => $("#inZip").click(), importDir: () => $("#inDir").click(),
+  fill: async () => { const miss = [...tpl().keys()].filter(p => !S.notes.has(p)); const n = await fillMissing(miss); toast(n ? `補上 ${n} 則筆記` : "筆記都在，不用補"); refresh(); } };
+
+/* ───────── 頂部提示列 ───────── */
+function renderBanner() {
+  const el = $("#banner"); let h = "", cls = "banner";
+  if (S.mode === "folder" && !S.perm) {
+    cls += " warn";
+    h = S.lost
+      ? `<span>找不到筆記資料夾「${esc(S.dir.name)}」，可能已經搬走或改名。</span><span class="row"><button class="btn" data-act="chooseFolder">重新選擇資料夾</button></span>`
+      : `<span>按「繼續」，研習頁才能讀寫筆記資料夾「${esc(S.dir.name)}」。瀏覽器每次重新打開都會問一次。</span><span class="row"><button class="btn" data-act="reconnect">繼續</button></span>`;
+  } else if (!S.storageOK && S.mode === "browser") {
+    cls += " warn"; h = `<span>這個瀏覽器不允許儲存（可能是無痕視窗），關掉後筆記就會消失。請改用一般視窗，或隨時「匯出備份」。</span><span class="row"><button class="btn" data-act="exportZip">匯出備份</button></span>`;
+  } else if (S.mode === "browser") {
+    const n = [...S.notes.keys()].length, days = S.lastBackup ? Math.floor((Date.now() - S.lastBackup) / 864e5) : null;
+    if (n && (days === null || days >= 7)) h = `<span>筆記存在這個瀏覽器裡，${days === null ? "還沒有備份過" : `已經 ${days} 天沒備份`}。清除瀏覽資料或換電腦時，筆記會不見。</span><span class="row"><button class="btn" data-act="exportZip">匯出備份</button>${S.canFolder ? `<button class="btn ghost" data-act="chooseFolder">改存到資料夾</button>` : ""}</span>`;
+    else if (!n && S.canFolder) h = ONLINE
+      ? `<span>第一次使用？建議先在電腦上建立一個空資料夾（例如「紫微筆記」），再按「選擇筆記資料夾」選它，研習頁會在裡面建好全部筆記。</span>`
+      : `<span>第一次使用？建議先選擇「筆記」資料夾，筆記就會直接存成檔案，整包搬走也不會遺失。</span>`;
+    if (!n && S.canFolder) h += `<span class="row"><button class="btn" data-act="chooseFolder">選擇筆記資料夾</button></span>`;
+  }
+  el.className = cls; el.innerHTML = h; el.hidden = !h;
+}
+
+/* ───────── 開始 ───────── */
+function progress() {
+  let done = 0, doing = 0;
+  for (const c of CELLS) { const s = statusOf(c); if (s === "已完成") done++; else if (s === "研讀中") doing++; }
+  return { done, doing };
+}
+function nextCell() { return PATH_ORDER.find(c => statusOf(c) === "研讀中") || PATH_ORDER.find(c => statusOf(c) === "未讀"); }
+function renderHome() {
+  const { done, doing } = progress(), nx = nextCell();
+  const mini = Array.from({ length: 12 }, (_, i) => `<span>表${i + 1}</span>` + Array.from({ length: 12 }, (_, m) => {
+    const c = CELL[id2(i + 1, m)], s = statusOf(c);
+    return `<button data-go="${c.id}" class="${s === "研讀中" ? "s1" : s === "已完成" ? "s2" : ""}" title="${label(c)} ${c.combo}・${s}" aria-label="${label(c)} ${s}"></button>`;
+  }).join("")).join("");
+  $("#v-home").innerHTML = `<div class="home">
+    <div class="hero">
+      ${nx ? `<div class="eyebrow">${statusOf(nx) === "研讀中" ? "接著讀" : "今日一格"}</div>
+      <div class="next">${label(nx)}　${nx.stars.length ? starsTxt(nx.stars) : "命無正曜"}</div>
+      <p>照學習路徑排序：表一逐格讀完，接著讀鏡像的表七，再讀表二、表八……共六對。</p>
+      <button class="btn big" data-go="${nx.id}">開始讀這一格</button>`
+      : `<div class="next">144 格全部完成</div><p>可以到「練習」複習，或回頭補強心得。</p><a class="btn big" href="#quiz">去練習</a>`}
+      <h3 style="font-size:12px;letter-spacing:.14em;color:var(--ink-2);font-weight:500;margin:24px 0 6px">怎麼開始</h3>
+      <ol class="steps">
+        <li>先到「十四主星」認識每顆星的性情。</li>
+        <li>在「逐格研讀」看盤面、格局、鏡像格，下面直接寫筆記，會自動存檔。</li>
+        <li>讀完把狀態改成「已完成」，這裡會自動帶到下一格。</li>
+        <li>每讀完一張表，到「練習」做幾題，答錯的題目之後會再出現。</li>
+        <li>常到「筆記與備份」看筆記存在哪裡，記得備份。</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>研讀進度</h2>
+      <div class="prog" role="img" aria-label="已完成 ${done} 格，研讀中 ${doing} 格，共 144 格"><i class="done" style="width:${done / 1.44}%"></i><i class="doing" style="width:${doing / 1.44}%"></i></div>
+      <div class="stat"><span><b>${done}</b>已完成</span><span><b>${doing}</b>研讀中</span><span><b>${144 - done - doing}</b>未讀</span></div>
+      <div class="minigrid">${mini}</div>
+      <p class="note-src">每列一張表、每欄一個命宮（子到亥）。黃色是研讀中，綠色是已完成，點一下就能跳到那一格。</p>
+    </div>
+  </div>`;
+}
+
+/* ───────── 逐格研讀 ───────── */
+function renderPickers() {
+  if (view() !== "study") return;
+  $("#tPick").innerHTML = TABLES.map((_, i) => `<button class="chip" data-t="${i + 1}" aria-pressed="${cur.t === i + 1}">表${i + 1}<span class="s">紫${BR[i]}</span></button>`).join("");
+  $("#mPick").innerHTML = [...BR].map((b, i) => { const c = CELL[id2(cur.t, i)], s = statusOf(c); return `<button class="chip" data-m="${i}" aria-pressed="${cur.m === i}">${b}<span class="s">${c.combo}${s === "已完成" ? " ✓" : s === "研讀中" ? " …" : ""}</span></button>`; }).join("");
+  const rows = [];
+  for (let m = 0; m < 12; m++) {
+    const c = CELL[id2(cur.t, m)];
+    c.pats.filter(isA).forEach(k => rows.push(`<button class="chip pa ${m === cur.m ? "on" : ""}" data-go="${c.id}">${short(PK[k].name)}・命${BR[m]}</button>`));
+    c.pats.filter(isB).forEach(k => rows.push(`<button class="chip pb ${m === cur.m ? "on" : ""}" data-go="${c.id}">${short(PK[k].name)}・命${BR[m]}</button>`));
+  }
+  $("#tbPats").innerHTML = `<span>表${cur.t}格局</span><div class="chips">${rows.join("") || '<span class="empty">本表以主星判定的古籍格局不多，看研讀卡的待成格條件。</span>'}</div>`;
+}
+$("#tPick").addEventListener("click", e => { const b = e.target.closest("[data-t]"); if (b) go(+b.dataset.t, cur.m); });
+$("#mPick").addEventListener("click", e => { const b = e.target.closest("[data-m]"); if (b) go(cur.t, +b.dataset.m); });
+
+function renderChart() {
+  const P = TABLES[cur.t - 1], m = cur.m, c = CELL[id2(cur.t, m)];
+  const tri = new Set([(m + 4) % 12, (m + 8) % 12, (m + 6) % 12]), jia = new Set([(m + 1) % 12, (m + 11) % 12]);
+  let h = "";
+  for (let r = 0; r < 4; r++) for (let k = 0; k < 4; k++) {
+    const b = DIV[r][k];
+    if (b === null) {
+      if (r === 1 && k === 1) h += `<div class="center">
+        <div class="no">第 ${cellNo(c)} 格 ／ 144</div>
+        <div class="big">${label(c)}</div>
+        <div class="sub">紫微在${BR[cur.t - 1]}　命宮：${c.stars.length ? starsTxt(c.stars) : "無正曜，借遷移 " + starsTxt(c.borrow)}</div>
+        <div class="sub">生成碼 <span class="code" id="gcode">${c.code}</span> <button class="mini" data-copy="gcode">複製</button></div>
+        <div class="sub">貼到<a href="${esc(CFG.chartTool)}" target="_blank" rel="noopener">萬用命盤產生器</a>（<a href="${esc(CFG.chartToolOnline)}" target="_blank" rel="noopener">線上版</a>），可疊加四化與吉煞</div>
+      </div>`;
+      continue;
+    }
+    const pi = ((m - b) % 12 + 12) % 12, cls = b === m ? "ming" : tri.has(b) ? "tri" : "";
+    const st = P[b].length ? P[b].map(s => `<span>${s}</span>`).join("") : `<span class="borrow">（${starsTxt(P[(b + 6) % 12])}）</span>`;
+    const bc = CELL[id2(cur.t, b)];
+    const gj = bc.pats.filter(isA).map(k => `<i>${short(PK[k].name)}</i>`).concat(bc.pats.filter(isB).map(k => `<i class="b">${short(PK[k].name)}</i>`)).join("");
+    h += `<div class="pal ${cls} ${jia.has(b) ? "jia" : ""}" data-b="${b}" role="button" tabindex="0" aria-label="${BR[b]}宮 ${PAL[pi]} ${P[b].join(" ") || "空宮"}"><div class="stars">${st}</div>${gj ? `<div class="gj">${gj}</div>` : ""}<span class="pn">${PAL[pi]}</span><span class="br">${BR[b]}</span></div>`;
+  }
+  $("#chart").innerHTML = h;
+}
+$("#chart").addEventListener("click", e => { const p = e.target.closest(".pal"); if (p) go(cur.t, +p.dataset.b); });
+$("#chart").addEventListener("keydown", e => { const p = e.target.closest(".pal"); if (p && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); go(cur.t, +p.dataset.b); } });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]"); if (!b) return;
+  const el = document.getElementById(b.dataset.copy), t = el.textContent;
+  navigator.clipboard.writeText(t).then(() => toast("已複製")).catch(() => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("已選取，請按 Ctrl+C（Mac 按 ⌘C）複製"); });
+});
+
+function tagHtml(k) {
+  const p = PK[k], cls = p.cls === "B" ? "b" : (p.kind === "結構" ? "s" : "");
+  return `<div class="tag ${cls}"><b>${p.name}</b>${p.cls === "B" ? `<small>還需：${p.need}</small>` : ""}<span class="cond">${p.cond}</span>${p.quote ? `<q>${p.quote}</q>` : ""}${p.note ? `<small>${p.note}</small>` : ""}</div>`;
+}
+function renderDetail() {
+  const c = CELL[id2(cur.t, cur.m)], twin = Z.twinOf(c);
+  const A = c.pats.filter(k => PK[k].cls === "A"), B = c.pats.filter(k => PK[k].cls === "B");
+  const sib = CELLS.filter(x => x.id !== c.id && x.id !== twin.id && (c.stars.length ? x.combo === c.combo : (!x.stars.length && starsTxt(x.borrow) === starsTxt(c.borrow))));
+  const T = c.tri, br = c.stars.filter(x => PARTNER[x]).map(x => x + "—" + PARTNER[x]);
+  $("#detail").innerHTML = `
+    <h2>${label(c)}　${c.stars.length ? starsTxt(c.stars) : "命無正曜"}</h2>
+    <div class="note-src">第 ${cellNo(c)} 格</div>
+    <h3>三方四正</h3>
+    <dl class="kv">
+      <dt>命宮 ${BR[c.m]}</dt><dd>${starsTxt(T["命"]) || "（空，借 " + starsTxt(c.borrow) + "）"}</dd>
+      <dt>財帛 ${BR[(c.m + 8) % 12]}</dt><dd>${starsTxt(T["財"]) || "（空宮）"}</dd>
+      <dt>事業 ${BR[(c.m + 4) % 12]}</dt><dd>${starsTxt(T["官"]) || "（空宮）"}</dd>
+      <dt>遷移 ${BR[(c.m + 6) % 12]}</dt><dd>${starsTxt(T["遷"]) || "（空宮）"}</dd>
+    </dl>
+    <h3>命宮暗合宮</h3>
+    <p style="margin:0;font-size:14px"><b style="font-family:var(--f-display)">${BR[c.anhe]}宮（${PAL[((c.m - c.anhe) % 12 + 12) % 12]}）</b>　${starsTxt(c.anheStars) || "空宮"}${br.length ? `<br><span class="note-src">永久暗合橋：${br.join("、")}，十二表中恆在暗合宮</span>` : ""}</p>
+    <p class="note-src">暗合即地支六合（子丑、寅亥、卯戌、辰酉、巳申、午未），看暗中的牽動與助力。</p>
+    <h3>已成格（主星即可判定）</h3>
+    <div class="tags">${A.map(tagHtml).join("") || `<span class="empty">無</span>`}</div>
+    <h3>待成格（主星條件已具）</h3>
+    <div class="tags">${B.map(tagHtml).join("") || `<span class="empty">無</span>`}</div>
+    <h3>對照研讀</h3>
+    <div class="links"><button class="chip" data-go="${twin.id}">鏡像格 ${label(twin)}</button>${sib.map(x => `<button class="chip" data-go="${x.id}">${label(x)}</button>`).join("")}</div>
+    <p class="note-src">鏡像格：表號+6、命宮+6，主星佈局完全相同，只差地支。日月廟陷、子午卯酉等地支型格局會在鏡像格消失或改變，這正是比較重點。</p>`;
+}
+function renderStudy() {
+  renderPickers(); renderChart(); renderDetail();
+  const c = CELL[id2(cur.t, cur.m)];
+  $("#studyNotes").innerHTML = editorHTML(Z.PATH.cell(c), `我的筆記：${label(c)}`);
+}
+
+/* ───────── 144 格總覽 ───────── */
+function renderOverview() {
+  if (view() !== "overview") return;
+  let h = `<thead><tr><th scope="col">表 ＼ 命</th>${[...BR].map(b => `<th scope="col">${b}</th>`).join("")}</tr></thead><tbody>`;
+  for (let t = 1; t <= 12; t++) {
+    h += `<tr><th scope="row">表${t}　紫${BR[t - 1]}</th>`;
+    for (let m = 0; m < 12; m++) {
+      const c = CELL[id2(t, m)], a = c.pats.filter(isA).map(k => short(PK[k].name)), s = statusOf(c);
+      const sc = s === "研讀中" ? "s1" : s === "已完成" ? "s2" : "";
+      h += `<td><button data-go="${c.id}" class="${c.stars.length ? "" : "void"} ${sc}" title="${label(c)} ${c.stars.join("") || "空宮"}${a.length ? "：" + a.join("、") : ""}・${s}">${sc ? `<span class="st">${s === "已完成" ? "✓" : "…"}</span>` : ""}${c.combo}<span class="k">${a.slice(0, 2).join("・")}${a.length > 2 ? "…" : ""}</span></button></td>`;
+    }
+    h += "</tr>";
+  }
+  $("#ovTable").innerHTML = h + "</tbody>";
+}
+
+/* ───────── 格局總表 ───────── */
+function renderPatterns() {
+  const cl = [["all", "全部"], ["A", "A 主星即判"], ["B", "B 待輔星"], ["C", "C 純輔煞"]], kd = [["all", "全部類別"], ["富貴", "富貴"], ["雜", "雜格"], ["凶", "凶格（古稱）"], ["結構", "結構"]];
+  $("#fCls").innerHTML = cl.map(([v, t]) => `<button class="chip" data-fc="${v}" aria-pressed="${fCls === v}">${t}</button>`).join("");
+  $("#fKind").innerHTML = kd.map(([v, t]) => `<button class="chip" data-fk="${v}" aria-pressed="${fKind === v}">${t}</button>`).join("");
+  const rows = PATS.filter(p => (fCls === "all" || p.cls === fCls) && (fKind === "all" || p.kind === fKind));
+  const occ = p => {
+    if (p.cls === "C") return `<span class="kd">第 4 圖層判定</span>`;
+    const ch = p.occ.map(id => `<button class="chip" data-go="${id}">${label(CELL[id])}</button>`);
+    return ch.length <= 6 ? `<div class="links">${ch.join("")}</div>` : `<details><summary>${ch.length} 格（每表皆有）</summary><div class="links">${ch.join("")}</div></details>`;
+  };
+  $("#ptTable").innerHTML = `<thead><tr><th>格局</th><th>層級</th><th>成立條件</th><th>古訣</th><th>出現位置</th><th>筆記</th></tr></thead><tbody>${rows.map(p => {
+    const path = Z.PATH.pat(p), has = Z.EDIT["格局"].some(([n]) => Z.getSection(S.notes.get(path) || "", n));
+    return `<tr>
+    <td class="n">${p.name}${p.alias && !p.name.includes(p.alias) ? `<small>又稱 ${p.alias}</small>` : ""}<small>${p.kind}</small></td>
+    <td><span class="lv ${p.cls}">${p.cls}</span></td>
+    <td>${p.cond}${p.need ? `<div class="kd">還需：${p.need}</div>` : ""}${p.note ? `<div class="kd">${p.note}</div>` : ""}</td>
+    <td>${p.quote ? `<q>${p.quote}</q>` : ""}</td>
+    <td>${occ(p)}</td>
+    <td><button class="mini" data-note="${esc(path)}" data-title="格局筆記：${esc(short(p.name))}">${has ? "看筆記 ✎" : "寫筆記"}</button></td></tr>`;
+  }).join("")}</tbody>`;
+}
+$("#v-patterns").addEventListener("click", e => { const a = e.target.closest("[data-fc]"), b = e.target.closest("[data-fk]"); if (a) { fCls = a.dataset.fc; renderPatterns(); } if (b) { fKind = b.dataset.fk; renderPatterns(); } });
+
+/* ───────── 十四主星 ───────── */
+function renderStars() {
+  const hua = s => Object.entries(SIHUA).flatMap(([g, a]) => a.map((x, i) => x === s ? `<span class="${i === 3 ? "ji" : ""}">${g}化${"祿權科忌"[i]}</span>` : "")).join("") || `<span>不參與生年四化</span>`;
+  $("#starGrid").innerHTML = ORDER.map(s => {
+    const St = STARS[s], seats = CELLS.filter(c => c.stars.includes(s)), combos = [...new Set(seats.map(c => c.combo))];
+    const pats = [...new Set(seats.flatMap(c => c.pats.filter(isA)))].map(k => short(PK[k].name));
+    const path = Z.PATH.star(s), has = Z.EDIT["主星"].some(([n]) => Z.getSection(S.notes.get(path) || "", n).replace(/^出處：.*$/m, "").trim());
+    return `<article class="card star"><div class="meta">${St.grp === 1 ? "第一系列" : "第二／三系列"}・${St.dou}・${St.wx}・${St.hua}</div><h2>${s}</h2><p>${St.kw}</p>
+    <div class="hua">${hua(s)}</div>
+    <p class="note-src" style="margin:8px 0 0">永久暗合夥伴：${PARTNER[s] ? `<b>${PARTNER[s]}</b>（十二表中恆在暗合宮）` : "無"}</p>
+    <h3>坐命 ${seats.length} 格，組合</h3><div class="links">${combos.map(k => `<button class="chip" data-go="${seats.find(c => c.combo === k).id}">${k}</button>`).join("")}</div>
+    ${pats.length ? `<h3>坐命可成之格</h3><div class="note-src">${pats.join("、")}</div>` : ""}
+    <div style="margin-top:12px"><button class="btn ghost" data-note="${esc(path)}" data-title="主星筆記：${s}">${has ? "看我的筆記 ✎" : "寫筆記"}</button></div></article>`;
+  }).join("");
+}
+
+/* ───────── 練習 ───────── */
+const comboTxt = c => c.stars.length ? starsTxt(c.stars) : "命無正曜";
+const pad4 = (ans, pool) => shuffle([ans, ...sample([...new Set(pool)].filter(x => x !== ans), 3)]);
+const QTYPES = {
+  stars: { name: "命宮主星", make(pool) { const c = rand(pool), ans = comboTxt(c);
+    return { q: `${label(c)}（紫微在${BR[c.t - 1]}），命宮坐什麼主星？`, ans, opts: pad4(ans, CELLS.map(comboTxt)), cell: c.id,
+      ex: `${label(c)} 命宮${c.stars.length ? "坐" + starsTxt(c.stars) : "無正曜，借對宮" + starsTxt(c.borrow)}。` }; } },
+  where: { name: "星在哪宮", make(pool) { const t = rand(pool).t, s = rand(ORDER), b = TABLES[t - 1].findIndex(a => a.includes(s)), ans = BR[b] + "宮";
+    return { q: `表${t}（紫微在${BR[t - 1]}），${s}在哪一宮？`, ans, opts: pad4(ans, [...BR].map(x => x + "宮")), cell: id2(t, b),
+      ex: `表${t} 的${s}在${BR[b]}宮${TABLES[t - 1][b].length > 1 ? "，與" + TABLES[t - 1][b].filter(x => x !== s).join("・") + "同宮" : ""}。` }; } },
+  tri: { name: "三方四正", make(pool) { const c = rand(pool), [k, nm] = rand([["財", "財帛"], ["官", "事業"], ["遷", "遷移"]]), f = x => starsTxt(x.tri[k]) || "空宮", ans = f(c);
+    return { q: `${label(c)}，${nm}宮坐什麼主星？`, ans, opts: pad4(ans, CELLS.map(f)), cell: c.id,
+      ex: `命宮${BR[c.m]}，財帛在${BR[(c.m + 8) % 12]}、事業在${BR[(c.m + 4) % 12]}、遷移在${BR[(c.m + 6) % 12]}。${nm}宮：${ans}。` }; } },
+  pat: { name: "成什麼格", make(pool) { const cs = pool.filter(c => c.pats.some(isA)); if (!cs.length) return null;
+    const c = rand(cs), k = rand(c.pats.filter(isA)), ans = short(PK[k].name);
+    const others = PATS.filter(p => p.cls === "A" && !QUIET.has(p.key) && !c.pats.includes(p.key)).map(p => short(p.name));
+    return { q: `${label(c)}，命宮${comboTxt(c)}，只看主星可以判定成哪個格局？`, ans, opts: pad4(ans, others), cell: c.id,
+      ex: `${PK[k].name}：${PK[k].cond}${PK[k].quote ? `　「${PK[k].quote}」` : ""}` }; } },
+  patcell: { name: "哪一格成格", make(pool) { const ps = PATS.filter(p => p.cls === "A" && !QUIET.has(p.key) && p.occ.length && p.occ.length <= 12 && p.occ.some(id => pool.includes(CELL[id]))); if (!ps.length) return null;
+    const p = rand(ps), c = CELL[rand(p.occ.filter(id => pool.includes(CELL[id])))], ans = label(c);
+    return { q: `下列哪一格成「${short(p.name)}」？`, ans, opts: pad4(ans, CELLS.filter(x => !p.occ.includes(x.id)).map(label)), cell: c.id,
+      ex: `${p.name}：${p.cond}。出現在 ${p.occ.map(id => label(CELL[id])).join("、")}。` }; } },
+  twin: { name: "鏡像格", make(pool) { const c = rand(pool), tw = Z.twinOf(c), ans = label(tw);
+    const near = [label(CELL[id2(c.t, (c.m + 6) % 12)]), label(CELL[id2((c.t + 5) % 12 + 1, c.m)]), ...sample(CELLS, 6).map(label)];
+    return { q: `${label(c)} 的鏡像格是哪一格？`, ans, opts: pad4(ans, near), cell: c.id, ex: `鏡像格是表號+6、命宮+6：${ans}。兩格主星佈局完全相同，只差地支。` }; } },
+  anhe: { name: "暗合宮", make() { const m = Math.floor(Math.random() * 12), ans = BR[Z.mod(1 - m)] + "宮";
+    return { q: `命宮在${BR[m]}，命宮的暗合宮在哪一支？`, ans, opts: pad4(ans, [...BR].map(x => x + "宮")), ex: "暗合即地支六合：子丑、寅亥、卯戌、辰酉、巳申、午未。" }; } },
+};
+let quizScope = "all", quizOnlyWrong = false, quizTypes = new Set(Object.keys(QTYPES)), Q = null, score = { r: 0, n: 0 }, wrong = [];
+async function loadWrong() { wrong = (await DB.get("kv", "quizWrong").catch(() => null)) || []; }
+const saveWrong = () => DB.set("kv", "quizWrong", wrong.slice(-60)).catch(() => {});
+function newQuestion() {
+  const pool = quizScope === "all" ? CELLS : CELLS.filter(c => c.t === +quizScope);
+  if (wrong.length && (quizOnlyWrong || Math.random() < 0.3)) return { ...rand(wrong), again: true };
+  if (quizOnlyWrong) return null;
+  for (let i = 0; i < 20; i++) { const q = QTYPES[rand([...quizTypes])].make(pool); if (q) return q; }
+  return null;
+}
+function renderQuiz() {
+  if (!Q) Q = newQuestion();
+  const scopes = [["all", "全部 144 格"], ...Array.from({ length: 12 }, (_, i) => [String(i + 1), "表" + (i + 1)])];
+  $("#v-quiz").innerHTML = `<div class="quiz">
+    <div class="filters">
+      <div class="chips" role="group" aria-label="範圍">${scopes.map(([v, t]) => `<button class="chip" data-qs="${v}" aria-pressed="${quizScope === v}">${t}</button>`).join("")}</div>
+      <div class="chips" role="group" aria-label="題型">${Object.entries(QTYPES).map(([k, v]) => `<button class="chip" data-qt="${k}" aria-pressed="${quizTypes.has(k)}">${v.name}</button>`).join("")}</div>
+    </div>
+    <div class="qcard">
+      <div class="row" style="justify-content:space-between"><span class="note-src">本次答對 ${score.r}／${score.n}　錯題本 ${wrong.length} 題${Q?.again ? "・<b>錯題再練</b>" : ""}</span>
+        <label class="note-src"><input type="checkbox" id="onlyWrong" ${quizOnlyWrong ? "checked" : ""}> 只練錯題</label></div>
+      ${Q ? `<div class="q">${esc(Q.q)}</div>
+      <div class="opts">${Q.opts.map(o => `<button data-ans="${esc(o)}">${esc(o)}</button>`).join("")}</div>
+      <div id="qex"></div>` : `<div class="q">${quizOnlyWrong ? "錯題本是空的，太好了！" : "這個範圍沒有題目，換個題型或範圍試試。"}</div>`}
+    </div></div>`;
+}
+$("#v-quiz").addEventListener("click", e => {
+  const s = e.target.closest("[data-qs]"), t = e.target.closest("[data-qt]"), a = e.target.closest("[data-ans]"), n = e.target.closest("[data-next]");
+  if (s) { quizScope = s.dataset.qs; Q = null; renderQuiz(); }
+  if (t) { const k = t.dataset.qt; if (quizTypes.has(k) && quizTypes.size > 1) quizTypes.delete(k); else quizTypes.add(k); Q = null; renderQuiz(); }
+  if (n) { Q = null; renderQuiz(); }
+  if (a && Q && !Q.done) {
+    Q.done = true; const ok = a.dataset.ans === Q.ans; score.n++; if (ok) score.r++;
+    document.querySelectorAll("#v-quiz [data-ans]").forEach(b => { b.disabled = true; if (b.dataset.ans === Q.ans) b.classList.add("ok"); else if (b === a) b.classList.add("ng"); });
+    const key = Q.q;
+    if (ok) wrong = wrong.filter(w => w.q !== key);
+    else if (!wrong.some(w => w.q === key)) { const { done, again, ...plain } = Q; wrong.push(plain); }
+    saveWrong();
+    $("#qex").innerHTML = `<div class="explain"><b>${ok ? "答對了！" : "正確答案：" + esc(Q.ans)}</b>　${esc(Q.ex)}</div>
+      <div class="row" style="margin-top:12px"><button class="btn" data-next>下一題</button>${Q.cell ? `<button class="btn ghost" data-go="${Q.cell}">去看這一格</button>` : ""}</div>`;
+    $("#qex [data-next]").focus();
+  }
+});
+$("#v-quiz").addEventListener("change", e => { if (e.target.id === "onlyWrong") { quizOnlyWrong = e.target.checked; Q = null; renderQuiz(); } });
+
+/* ───────── 書目與學習路徑 ───────── */
+function renderBooks() {
+  $("#books").innerHTML = `
+  <h2>學習路徑</h2>
+  <ol>
+    <li><b>十四主星本性</b>：讀「十四主星」頁，逐星對照《全書》諸星問答論與《紫微斗數新詮》四十周年增訂版，心得寫在每顆星的「寫筆記」。</li>
+    <li><b>十二表結構</b>：表號＝紫微所在地支（表1紫微在子…表12紫微在亥）。對照《慧心齋主談星際關係》書末基礎命盤表一至表十二。</li>
+    <li><b>逐表逐格</b>：每張表先看上方「本表格局」條，知道這張表出現哪些古籍格局，再從命子讀到命亥。命宮主星以《慧心齋主談命宮》為主，筆記寫在盤面下方。</li>
+    <li><b>鏡像對讀</b>：讀完表1跳表7，依序完成 1↔7、2↔8……六對，特別比較只在一邊出現的地支型格局（明珠出海、月朗天門、極向離明等）。</li>
+    <li><b>格局總表</b>：每讀完一張表，回格局總表把 A 類格局逐條核對古訣；B 類到萬用命盤產生器第 4 圖層疊加輔星確認。</li>
+    <li><b>練習</b>：每讀完一張表，到「練習」把範圍設成那張表，做到全對。</li>
+    <li><b>疊加四化與宮位</b>：《紫微四化星》逐干對讀，《談星際關係》對十二宮關係。</li>
+  </ol>
+  <h2>結構速查（程式窮舉驗證）</h2>
+  <ul>
+    <li>命宮組合共 39 種：單星 14 種（11 星各坐 6 格，紫微、武曲、廉貞單坐各 2 格），雙星 24 種各 2 格，空宮 24 格。</li>
+    <li>每格都有鏡像格（表號+6、命宮+6），主星佈局完全相同，144 格成 72 對。</li>
+    <li>五永久暗合橋：${BRIDGES.map(p => p.join("—")).join("、")}，十二表中恆互在對方暗合宮；紫微、巨門、天相、七殺沒有永久暗合夥伴。</li>
+    <li>命宮的暗合宮只會是兄弟、子女、疾厄、交友、田宅、父母（宮序差恆為奇數）。</li>
+    <li>格局編碼：A 類 ${PATS.filter(p => p.cls === "A").length} 個、B 類 ${PATS.filter(p => p.cls === "B").length} 個、C 類 ${PATS.filter(p => p.cls === "C").length} 個。</li>
+  </ul>
+  <h2>慧心齋主著作</h2>
+  <h3>大塊文化・生命之旅系列（主讀）</h3>
+  <table class="books"><thead><tr><th>書名</th><th>出版</th><th>用途</th></tr></thead><tbody>
+   <tr><td>慧心齋主談命宮</td><td>2025</td><td>144 格命宮筆記主軸；甲級星分第一至第三系列，另論六吉、六煞、四化、乙級星與盤性</td></tr>
+   <tr><td>慧心齋主談星際關係</td><td>2025</td><td>十二宮與星曜彼此關係；書末附基礎命盤表一至表十二</td></tr>
+   <tr><td>紫微斗數新詮 四十周年經典增訂版＋修練指引手冊</td><td>2021</td><td>名詞、十二宮、各星系分析</td></tr>
+   <tr><td>紫微四化星：如何改變一生的祕笈＋奇妙修練日記簿</td><td>2021</td><td>十干四化逐章、四化與大運流年</td></tr>
+  </tbody></table>
+  <h3>時報文化等舊版</h3>
+  <table class="books"><tbody>
+   <tr><td>紫微斗數新詮</td><td>時報 1982</td><td>原版，與增訂版對照</td></tr>
+   <tr><td>紫微斗數看命宮</td><td>時報</td><td>與《談命宮》對照新舊觀點</td></tr>
+   <tr><td>紫微斗數導讀</td><td>時報</td><td>入門架構</td></tr>
+   <tr><td>如何推算命運</td><td>時報 1984</td><td>推運</td></tr>
+   <tr><td>紫微斗數看婚姻／看錢財／看工商人</td><td>時報 1984–1988</td><td>夫妻、財帛、事業宮專題</td></tr>
+   <tr><td>紫微斗數趨吉避凶法</td><td>自立 1986</td><td>煞忌與化解</td></tr>
+   <tr><td>紫微斗數開發潛能（一）（二）</td><td>時報</td><td>星曜特質應用</td></tr>
+  </tbody></table>
+  <h2>古籍</h2>
+  <ul>
+    <li>《紫微斗數全書》（明，託名陳希夷著、羅洪先校）：〈太微賦〉〈骨髓賦〉〈形性賦〉〈女命骨髓賦〉〈諸星問答論〉及定富局、定貴局等格局。本頁古訣多出於此，各刊本文字略有異同。</li>
+    <li>《紫微斗數全集》：與《全書》互校。</li>
+    <li>「探花格」「狀元格」等名稱屬後世通稱，《全書》未見，已在格局總表註明。</li>
+  </ul>`;
+}
+
+/* ───────── 筆記與備份 ───────── */
+function renderBackup() {
+  const n = [...S.notes.keys()].length;
+  const where = S.mode === "folder"
+    ? `<div class="where">資料夾「${esc(S.dir.name)}」</div><p>${S.perm ? "筆記直接存成 .md 檔。整個研習包資料夾複製、壓縮帶走，筆記都在裡面。" : S.lost ? "找不到這個資料夾，可能已經搬走或改名，請重新選擇。" : "瀏覽器需要你按一次「繼續」才能讀寫。"}</p>
+       <div class="row">${S.perm ? "" : S.lost ? `<button class="btn" data-act="chooseFolder">重新選擇</button>` : `<button class="btn" data-act="reconnect">繼續</button>`}<button class="btn ghost" data-act="chooseFolder">換一個資料夾</button><button class="btn ghost" data-act="useBrowser">改存在瀏覽器</button></div>`
+    : `<div class="where">這個瀏覽器裡（${n} 則）</div><p>${S.canFolder ? "建議改存到研習包裡的「筆記」資料夾，筆記會變成檔案，搬家、備份都簡單。" : "這個瀏覽器不能直接存到資料夾（Chrome、Edge 才可以）。請常按「匯出備份」。"}</p>
+       <div class="row">${S.canFolder ? `<button class="btn" data-act="chooseFolder">選擇筆記資料夾</button>` : ""}</div>`;
+  $("#v-backup").innerHTML = `<div class="cards">
+    <article class="card"><h2>筆記存在哪裡</h2>${where}</article>
+    <article class="card"><h2>匯出備份</h2><p>把全部筆記打包成一個 zip 檔下載。換電腦、交作業、給老師看都用這個。<br><span class="note-src">上次備份：${S.lastBackup ? ymd(new Date(S.lastBackup)) : "還沒有"}</span></p>
+      <div class="row"><button class="btn" data-act="exportZip">匯出備份 zip</button></div></article>
+    <article class="card"><h2>匯入</h2><p>把備份 zip 或筆記資料夾讀進來。空白的段落會補上；兩邊都寫過的段落，匯入的文字會接在後面，<b>不會覆蓋</b>任何文字。</p>
+      <div class="row"><button class="btn ghost" data-act="importZip">匯入 zip</button><button class="btn ghost" data-act="importDir">匯入資料夾</button></div></article>
+    ${S.mode === "folder" && S.perm ? `<article class="card"><h2>補齊筆記檔</h2><p>如果不小心刪掉某些筆記檔，這裡可以把缺少的補回空白範本，已經存在的檔案不會動。</p><div class="row"><button class="btn ghost" data-act="fill">補齊缺少的筆記</button></div></article>` : ""}
+    <article class="card"><h2>進階：用 Obsidian 或 Typora</h2><p>筆記都是一般的 Markdown（.md）檔。用 Obsidian「開啟資料夾作為 vault」選「筆記」資料夾，就有雙向連結；Typora 也能直接打開來讀寫。研習頁和它們改的是同一批檔案，切回研習頁時會自動重新讀取，但請不要兩邊同時改同一則筆記。</p></article>
+    ${ONLINE ? `<article class="card"><h2>下載離線版</h2><p>研習包 zip 裡有研習頁、萬用命盤產生器和整套筆記，解壓縮後雙擊「紫微研習.html」就能在沒有網路時使用。線上版和離線版的筆記可以共用同一個筆記資料夾。</p><div class="row"><a class="btn ghost" href="紫微研習包.zip" download>下載紫微研習包</a></div></article>` : ""}
+    <article class="card"><h2>瀏覽器說明</h2><p><b>Chrome、Edge</b>：可以直接存到資料夾，最推薦。<br><b>Safari、Firefox</b>：筆記存在瀏覽器裡，請定期匯出備份。<br>請不要用無痕視窗，關掉後筆記會消失。</p></article>
+  </div>`;
+}
+$("#inZip").addEventListener("change", async e => {
+  const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+  try { await runImport(await Z.readZip(await f.arrayBuffer()), "匯入 " + ymd(new Date())); }
+  catch (err) { toast("讀不到這個 zip 檔：" + (err.message || err)); }
+});
+$("#inDir").addEventListener("change", async e => {
+  const fs = [...e.target.files].filter(f => f.name.endsWith(".md")); e.target.value = "";
+  const list = []; for (const f of fs) list.push({ path: f.webkitRelativePath || f.name, text: await f.text() });
+  await runImport(list, "匯入 " + ymd(new Date()));
+});
+
+/* ───────── 啟動 ───────── */
+(async () => {
+  if (ONLINE) $(".vault").innerHTML = `線上版・<a href="紫微研習包.zip" download>下載離線版</a><br><b>筆記：你選的筆記資料夾</b>`;
+  await boot(); await loadWrong();
+  renderBooks(); renderBanner(); route();
+})();
+
+</script>
+</body>
+</html>
