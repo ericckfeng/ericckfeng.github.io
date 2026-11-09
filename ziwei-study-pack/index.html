@@ -224,6 +224,45 @@ table.ov td button.s1 .st{color:var(--gold)} table.ov td button.s2 .st{color:var
 .modal .row{justify-content:flex-end}
 .toast{z-index:40}
 @media print{nav.tabs,.banner,.notes,.btn{display:none!important}}
+/* 四化學習 */
+.hb{display:inline-block;font-style:normal;font-family:var(--f-body);font-weight:700;font-size:11px;line-height:1.45;padding:0 4px;border-radius:2px;color:var(--sheet);margin-left:2px;vertical-align:1px}
+.hb.hl{background:var(--jade)} .hb.hq{background:var(--gold)} .hb.hk{background:var(--indigo)} .hb.hj{background:var(--cinnabar)}
+table.hz{border-collapse:collapse;width:100%;background:var(--sheet);border:1px solid var(--rule)}
+table.hz th,table.hz td{border:1px solid var(--rule);padding:0;text-align:center}
+table.hz thead th{font-size:12px;color:var(--ink-2);font-weight:500;padding:6px 4px;background:var(--paper)}
+table.hz tbody th{font-family:var(--f-display);font-size:18px;padding:4px 10px;background:var(--paper)}
+.hcell{width:100%;min-height:44px;border:0;background:transparent;color:var(--ink);font-family:var(--f-display);font-weight:700;font-size:16px;cursor:pointer;padding:6px 2px}
+.hcell:hover{background:var(--indigo-soft)}
+.hcell[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+.htxt{margin:0;font-size:15px}
+.hrow{font-size:14px;padding:3px 0}
+.hrow b{font-family:var(--f-display)}
+.rel{display:inline-block;padding:0 6px;border-radius:2px;font-size:13px;border:1px solid var(--rule)}
+.r0{background:var(--cinnabar-soft)} .r1{background:var(--gold-soft)} .r2{background:var(--indigo-soft)} .r3{background:var(--jade-soft)} .r4{background:var(--paper)}
+.hchart .pal{cursor:default}
+.hchart .pal:hover{background:var(--sheet)}
+.hchart .pal.hon,.hchart .pal.hon:hover{background:var(--indigo-soft)}
+.pal .stars .aux{font-weight:500;color:var(--indigo);font-size:14px}
+h3.sec{font-size:12px;letter-spacing:.14em;color:var(--ink-2);font-weight:500;margin:24px 0 8px}
+table.hm{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}
+table.hm th,table.hm td{border:1px solid var(--rule);padding:5px 6px;text-align:center}
+table.hm thead th{background:var(--paper);font-weight:500}
+table.hm thead th small{display:block;font-family:var(--f-display);color:var(--ink-2);font-size:12px}
+table.hm tbody th{background:var(--paper)}
+table.hm tr.cur th .mini{background:var(--ink);color:var(--sheet);border-color:var(--ink)}
+table.hm tr.cur td{font-weight:700}
+table.hm tfoot td,table.hm tfoot th{font-size:12px;background:var(--paper);font-weight:500}
+/* 四化日記 */
+.study.diary{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:900px){.study.diary{grid-template-columns:1fr}}
+.dleft{display:flex;flex-direction:column;gap:12px}
+.dlist{display:flex;flex-direction:column;gap:4px;margin-top:10px;max-height:420px;overflow:auto}
+.ditem{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:8px;align-items:baseline;text-align:left;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:3px;padding:6px 10px;cursor:pointer}
+.ditem b{font-family:var(--f-mono);font-weight:500}
+.ditem small{color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ditem[aria-pressed="true"]{border-color:var(--ink);background:var(--sheet)}
+input[type=date]{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:6px 8px}
+.linkbtn{border:0;background:none;color:var(--indigo);cursor:pointer;padding:0;font-family:var(--f-display);font-weight:700;font-size:15px;text-decoration:underline}
 
 </style>
 </head>
@@ -231,7 +270,7 @@ table.ov td button.s1 .st{color:var(--gold)} table.ov td button.s2 .st{color:var
 <div class="wrap">
   <header class="top">
     <h1>紫微一百四十四格研習<small>十二表 × 十二命宮 ‧ 古籍格局對照 ‧ 以古籍與慧心齋主著作為本</small></h1>
-    <div class="vault">研習包 v1.3.0<br><b>筆記：研習包裡的「筆記」資料夾</b></div>
+    <div class="vault">研習包 v1.4.0<br><b>筆記：研習包裡的「筆記」資料夾</b></div>
   </header>
   <nav class="tabs" aria-label="分頁">
     <a href="#home" data-tab="home">開始</a>
@@ -239,6 +278,8 @@ table.ov td button.s1 .st{color:var(--gold)} table.ov td button.s2 .st{color:var
     <a href="#overview" data-tab="overview">144 格總覽</a>
     <a href="#patterns" data-tab="patterns">格局總表</a>
     <a href="#stars" data-tab="stars">十四主星</a>
+    <a href="#sihua" data-tab="sihua">四化學習</a>
+    <a href="#diary" data-tab="diary">四化日記</a>
     <a href="#quiz" data-tab="quiz">練習</a>
     <a href="#books" data-tab="books">書目與路徑</a>
     <a href="#backup" data-tab="backup">筆記與備份</a>
@@ -283,6 +324,8 @@ table.ov td button.s1 .st{color:var(--gold)} table.ov td button.s2 .st{color:var
     <div class="grid" id="starGrid"></div>
   </section>
 
+  <section id="v-sihua" hidden></section>
+  <section id="v-diary" hidden></section>
   <section id="v-quiz" hidden></section>
   <section id="v-books" hidden><div class="prose" id="books"></div></section>
   <section id="v-backup" hidden></section>
@@ -301,6 +344,9 @@ const BR = "子丑寅卯辰巳午未申酉戌亥";
 const PAL = ["命宮","兄弟","夫妻","子女","財帛","疾厄","遷移","交友","事業","田宅","福德","父母"];
 const ORDER = ["紫微","天機","太陽","武曲","天同","廉貞","天府","太陰","貪狼","巨門","天相","天梁","七殺","破軍"];
 const SHORT = Object.fromEntries(ORDER.map((s, i) => [s, "紫機日武同廉府月貪巨相梁殺破"[i]]));
+// 主星組合依慣用叫法；其餘照 SHORT 拼
+const COMBO_NAME = { "日梁": "陽梁", "同月": "同陰", "日巨": "陽巨" };
+const comboOf = own => { const k = own.map(s => SHORT[s]).join(""); return COMBO_NAME[k] || k; };
 const SUN_DOWN = new Set([8,10,11,0,1]), MOON_DOWN = new Set([3,5,6]);   // 太陽／太陰落陷地支
 const mod = (a, n = 12) => ((a % n) + n) % n;
 const pad = n => String(n).padStart(2, "0");
@@ -435,7 +481,7 @@ for (let t = 1; t <= 12; t++) {
     const ks = PATS.filter(p => p.f(c)).map(p => p.key);
     PATS.forEach(p => { if (ks.includes(p.key)) p.occ.push(id); });
     CELLS.push({ id, t, m, stars: own, borrow: own.length ? [] : P[mod(m + 6)],
-      combo: own.length ? own.map(s => SHORT[s]).join("") : "空",
+      combo: own.length ? comboOf(own) : "空",
       tri: { 命: P[m], 財: P[mod(m + 8)], 官: P[mod(m + 4)], 遷: P[mod(m + 6)] },
       pats: ks, anhe: mod(1 - m), anheStars: P[mod(1 - m)], code: `${pad(t)}00${pad(m + 1)}0000003` });
   }
@@ -481,6 +527,93 @@ const BOOKS = [
  ["紫微斗數全書","明刊本","—","—","〈太微賦〉〈骨髓賦〉〈形性賦〉〈女命骨髓賦〉〈諸星問答論〉及定富局、定貴局。格局總表的古訣底本，各刊本文字略異。"],
 ];
 
+/* ───────── 四化 ───────── */
+const HUA = "祿權科忌";
+const STEMS = Object.keys(SIHUA);
+const HUA_LIST = STEMS.flatMap(g => SIHUA[g].map((star, i) => ({ g, i, star, name: star + "化" + HUA[i] })));
+const HUA_NAMES = [...new Set(HUA_LIST.map(h => h.name))];   // 39 個（乙、庚同為太陰化忌）
+const AUX = { "左輔": "右弼", "右弼": "左輔", "文昌": "文曲", "文曲": "文昌" };
+const AUX_SHORT = { "左輔": "左", "右弼": "右", "文昌": "昌", "文曲": "曲" };
+// 四化縮寫：太陽為陽、太陰為陰（甲干 廉破武陽）
+const HUA_SHORT = { ...SHORT, "太陽": "陽", "太陰": "陰" };
+const starShort = s => HUA_SHORT[s] || AUX_SHORT[s] || s;
+// 左輔辰起正月順行、右弼戌起正月逆行；文曲辰起子時順行、文昌戌起子時逆行。兩星支序和恆 ≡ 2，以丑未為軸對稱
+const auxPartnerAt = b => mod(2 - b);
+// 通行說法（入門提要，非《紫微四化星》原文）
+const HUA_TXT = {
+ "廉貞化祿":"囚星轉活，人緣、才藝、感情得以發揮，規範中能變通。",
+ "破軍化權":"開創力得到主導權，敢破敢立；易一意孤行，耗損加大。",
+ "武曲化科":"財星有條理，理財規劃、執行有方，以專業與信用得名。",
+ "太陽化忌":"付出不得回報、名聲受累；多應在男性長輩、眼目，或為他人操勞。",
+ "天機化祿":"思慮靈活而生財，企劃、變動帶來機會；多動多得，也易多心。",
+ "天梁化權":"庇蔭轉為主導，好照顧人、好管事，原則性強；易說教。",
+ "紫微化科":"形象穩重，受人敬重，有貴人提攜，遇事能緩和。",
+ "太陰化忌":"情緒內斂鬱結；田宅、積蓄、財物收縮，母親或伴侶等女性親屬方面多牽掛。",
+ "天同化祿":"享受、安逸、人際和樂，易得輕鬆之財；宜防懶散。",
+ "天機化權":"謀略得主導，擅規劃決策；思慮過度，變動頻繁。",
+ "文昌化科":"文書、考試、證照有利，文字表達得名。",
+ "廉貞化忌":"囚性加重，情緒糾結、是非官非、感情困擾；宜守規矩。",
+ "太陰化祿":"細膩得財，積蓄、房產、女性助力，感情溫潤。",
+ "天同化權":"由安逸轉為主動爭取，情緒表達強，經激發而有成。",
+ "天機化科":"思路清晰，善於分析規劃，以點子與專業受肯定。",
+ "巨門化忌":"口舌是非、誤會猜疑，言多必失；也可轉為深入研究。",
+ "貪狼化祿":"人緣佳、多才多藝，交際、娛樂、偏財機會多。",
+ "太陰化權":"柔中帶剛，掌理財務家務，對感情與財物有主導慾。",
+ "右弼化科":"得平輩或貴人協助，人和事順，間接獲益。",
+ "天機化忌":"思慮反覆、計畫生變、鑽牛角尖；手足或交通變動之擾。",
+ "武曲化祿":"正財順遂，務實執行帶來收益。",
+ "貪狼化權":"交際手腕強，企圖心旺；宜防貪多。",
+ "天梁化科":"清高受敬，逢凶有解；醫藥、宗教、公益方面有聲譽。",
+ "文曲化忌":"言語、契約、票據出錯，或感情多糾葛。",
+ "太陽化祿":"付出有回報，名聲帶財，人際廣，男性助力。",
+ "武曲化權":"決斷力強、執行剛猛，掌財務大權；易剛愎。",
+ "天同化科":"溫和得人緣，遇事能化解，生活和樂。",
+ "巨門化祿":"以言語、教學、研究、仲介得利，是非轉為助力。",
+ "太陽化權":"名聲擴大、領導欲強；易過度張揚。",
+ "文曲化科":"才藝、口才、藝術表現受賞識。",
+ "文昌化忌":"簽約、證件、成績出錯，宜細心覆核。",
+ "天梁化祿":"受庇蔭而得利，長輩、保險、醫藥方面得財；宜防施惠生紛擾。",
+ "紫微化權":"帝星掌權，領導力顯；易專斷。",
+ "左輔化科":"得上司、平輩相助，合作順利。",
+ "武曲化忌":"資金周轉困難、財務決策失誤，行事剛硬而孤。",
+ "破軍化祿":"破舊立新而得利，變動中有收穫，花費也多。",
+ "巨門化權":"說服力強，言語有分量；易強辯爭執。",
+ "太陰化科":"細膩與品味受肯定，女性貴人相助。",
+ "貪狼化忌":"欲望受挫或沉迷，交際、娛樂、桃花之困；宜節制。",
+};
+// 《紫微四化星》要點：待補（關鍵詞＋章節出處，不抄原文）
+const HUA_BOOK = {};
+
+/** 兩宮（支序）之間的關係 */
+function relOf(a, b) {
+  const d = mod(b - a);
+  if (d === 0) return "同宮";
+  if (d === 6) return "對宮";
+  if (d === 4 || d === 8) return "三合";
+  const adj = d === 1 || d === 11;
+  if (mod(a + b) === 1) return adj ? "暗合・鄰宮" : "暗合";
+  return adj ? "鄰宮" : "其他";
+}
+/** aux：{左輔: 支序, 文昌: 支序}，自動補上成對的另一顆 */
+function auxPositions(aux = {}) {
+  const o = {};
+  for (const [s, b] of Object.entries(aux)) if (AUX[s] && b != null) { o[s] = b; o[AUX[s]] = auxPartnerAt(b); }
+  return o;
+}
+/** 某表某干的四化落在哪一支；輔星未指定位置時 b 為 null */
+function huaPlaces(t, g, aux = {}) {
+  const at = auxPositions(aux);
+  return SIHUA[g].map((star, i) => ({ i, star, name: star + "化" + HUA[i],
+    b: AUX[star] ? (at[star] ?? null) : TABLES[t - 1].findIndex(a => a.includes(star)) }));
+}
+/** 十二表中，某干四化兩兩之間的關係：[{i, j, rels: [表1…表12]}]，有輔星未安時 rels 為 null */
+function huaPairs(g, aux = {}) {
+  const P = TABLES.map((_, k) => huaPlaces(k + 1, g, aux)), out = [];
+  for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++)
+    out.push({ i, j, rels: P[0][i].b == null || P[0][j].b == null ? null : P.map(p => relOf(p[i].b, p[j].b)) });
+  return out;
+}
+
 /* ───────── 名稱與路徑（相對於「筆記」資料夾） ───────── */
 const tname = t => `表${pad(t)}-紫微在${BR[t - 1]}`;
 const cname = c => `表${pad(c.t)}-命${BR[c.m]}`;
@@ -493,6 +626,9 @@ const PATH = {
   pat: p => `格局/${pfile(p)}.md`,
   star: s => `十四主星/${s}.md`,
   book: n => `書目/${n}.md`,
+  huaIndex: "四化/十干四化.md",
+  myHua: "四化/我的四化星性.md",
+  diary: d => `四化日記/${d}.md`,
 };
 
 /* ───────── 可編輯段落與寫作引導 ───────── */
@@ -511,6 +647,12 @@ const EDIT = {
     ["古籍（諸星問答論等）", "《全書》〈諸星問答論〉怎麼描述這顆星？"],
     ["慧心齋主觀點", "書中這顆星的性情、系列、喜忌。"],
     ["我的心得", "用三個關鍵詞形容這顆星；它和哪顆星同宮時變化最大？"],
+  ],
+  "四化星性": HUA_NAMES.map(n => [n, "書中重點（註明頁碼）、你自己的理解、生活中遇到的例子。"]),
+  "四化日記": [
+    ["今日事件", "今天發生了什麼事、起了什麼念頭？照實記下，先不要解釋。"],
+    ["對應四化", "哪件事像化祿、化權、化科、化忌？對應到哪顆星的星性？"],
+    ["心得", "回頭看：有沒有把自己的情緒投射到星曜上？下次遇到同樣的天干想觀察什麼？"],
   ],
 };
 const DEFAULT_KIND_SECTIONS = [["我的心得", "寫下你的想法。"]];
@@ -797,6 +939,8 @@ tags: [紫微144格]
 - [[暗合]]：暗合宮概念、五永久暗合橋
 - \`十四主星/\`：每顆主星一則
 - \`書目/\`：慧心齋主著作與古籍
+- \`四化/\`：[[十干四化]]（四化表、通行說法）與 [[我的四化星性]]（自己的四化筆記）
+- \`四化日記/\`：每天一篇，由研習頁「四化日記」建立
 
 ## 學習路徑
 1. 十四主星本性：[[紫微]] 起，對照《全書》諸星問答論與 [[紫微斗數新詮 四十周年增訂版]]。
@@ -804,7 +948,8 @@ tags: [紫微144格]
 3. 逐表逐格：先看表索引的「本表格局」，再從命子讀到命亥；命宮以 [[慧心齋主談命宮]] 為主。
 4. 鏡像對讀：表1↔表7、表2↔表8……，比較地支型格局的差異。
 5. 每讀完一表，回 [[格局總表]] 核對古訣；B 類格局到萬用命盤產生器第 4 圖層疊加輔星確認。
-6. 疊加四化與宮位：[[紫微四化星]]、[[慧心齋主談星際關係]]。
+6. 四化：在研習頁「四化學習」熟記十干四化與星性（[[十干四化]]、[[紫微四化星]]），再看四化入十二表的同宮、三合、對宮、暗合；每天寫四化日記。
+7. 疊加宮位：[[慧心齋主談星際關係]]。
 
 ## 十二表
 ${Array.from({ length: 12 }, (_, i) => `- [[${tname(i + 1)}]]`).join("\n")}
@@ -889,6 +1034,11 @@ tags: [紫微144格]
 ## 練習
 研習頁的「練習」分頁會出題：某格命宮坐什麼星、成什麼格、鏡像格是哪一格。答錯的題目之後會再出現。
 
+## 四化學習與四化日記
+- **四化星性**：點十干四化表裡的任一化，看通行說法，在下方寫自己的星性筆記（存在 \`四化/我的四化星性.md\`）。
+- **四化入表**：選天干與表號，看祿權科忌落在哪一宮、彼此是同宮、三合、對宮還是暗合。左輔／右弼、文昌／文曲只要指定一顆的位置，另一顆自動安上。
+- **四化日記**：選日期，再查萬年曆的日干支、選當天的天干（例如丁亥日選丁），就會帶出當天四化。每天一篇，存在 \`四化日記/\` 資料夾；同一天已經寫過時會提醒，不會覆蓋。可以補寫之前的日子。
+
 ## 喜歡手寫
 研習包裡的 \`紫微144格練習簿.pdf\`（A4，190 頁）每格一頁，附手寫欄和每張表的默寫測驗，印出來搭配書讀。
 
@@ -908,6 +1058,74 @@ tags: [紫微144格]
 `);
 }
 
+const huaLink = (s, i) => `[[我的四化星性#${s}化${HUA[i]}|${s}化${HUA[i]}]]`;
+function huaIndexNote() {
+  const rows = STEMS.map(g => `| ${g} | ${SIHUA[g].map((s, i) => huaLink(s, i).replace("|", "\\|")).join(" | ")} |`).join("\n");
+  const txt = STEMS.map(g => `### ${g}干\n` + SIHUA[g].map((s, i) => `- **${s}化${HUA[i]}**：${HUA_TXT[s + "化" + HUA[i]]}`).join("\n")).join("\n\n");
+  return clean(`---
+title: 十干四化
+類型: 索引
+tags: [紫微四化]
+---
+# 十干四化
+
+| 天干 | 化祿 | 化權 | 化科 | 化忌 |
+|---|---|---|---|---|
+${rows}
+
+四化表依萬用命盤產生器所用之表（戊：右弼化科；庚：陽武同陰；壬：左輔化科），各派略有出入。自己的星性筆記寫在 [[我的四化星性]]，每天的觀察寫在「四化日記」資料夾。
+
+## 輔星的位置
+左輔、右弼由出生月決定（左輔辰起正月順行，右弼戌起正月逆行）；文昌、文曲由出生時辰決定（文曲辰起子時順行，文昌戌起子時逆行）。所以兩星的支序和恆為 2（mod 12），以丑未為軸左右對稱：知道一顆，就知道另一顆；只有在丑、未才會同宮。
+
+## 通行說法
+以下是入門提要，不是《紫微四化星》原文；書中要點請對照原書，用自己的話寫進 [[我的四化星性]]。
+
+${txt}
+`);
+}
+function myHuaNote() {
+  return clean(`---
+title: 我的四化星性
+類型: 四化星性
+tags: [紫微四化]
+---
+# 我的四化星性
+
+每一化一段，寫書中重點（註明 [[紫微四化星]] 頁碼）、自己的理解和生活中的例子。研習頁「四化學習」會顯示對應的段落。四化表見 [[十干四化]]。
+
+` + HUA_NAMES.map(n => `## ${n}\n\n`).join("\n"));
+}
+function huaTodayText(g) {
+  if (!SIHUA[g]) return "（還沒選天干）";
+  return `${g}干四化：\n` + SIHUA[g].map((s, i) => `- 化${HUA[i]}：${AUX[s] ? s : `[[${s}]]`}　${huaLink(s, i)}：${HUA_TXT[s + "化" + HUA[i]]}`).join("\n");
+}
+function diaryNote(date, g) {
+  return clean(`---
+title: ${date} 四化日記
+類型: 四化日記
+日期: ${date}
+天干: ${g}
+tags: [四化日記]
+---
+# ${date}　四化日記
+
+## 今日四化
+${huaTodayText(g)}
+
+## 今日事件
+
+
+## 對應四化
+
+
+## 心得
+
+`);
+}
+const setDiaryStem = (md, g) => setSection(setFront(md, "天干", g), "今日四化", huaTodayText(g));
+const setDiaryDate = (md, d) => setFront(setFront(md, "日期", d), "title", `${d} 四化日記`).replace(/^# \d{4}-\d{2}-\d{2}(?=　四化日記)/m, "# " + d);
+
 /** 產生整個筆記資料夾：[{path, text}] */
 function allNotes(date) {
   const out = [];
@@ -917,6 +1135,8 @@ function allNotes(date) {
   out.push({ path: "格局總表.md", text: patIndexNote(date) });
   ORDER.forEach(s => out.push({ path: PATH.star(s), text: starNote(s) }));
   BOOKS.forEach(b => out.push({ path: PATH.book(b[0]), text: bookNote(b) }));
+  out.push({ path: PATH.huaIndex, text: huaIndexNote() });
+  out.push({ path: PATH.myHua, text: myHuaNote() });
   out.push({ path: "README.md", text: readmeNote() });
   out.push({ path: "暗合.md", text: anheNote() });
   out.push({ path: "使用說明.md", text: guideNote() });
@@ -1030,12 +1250,14 @@ function normalizeImportPath(p) {
   p = p.replace(/\\/g, "/");
   const i = p.indexOf("筆記/");
   if (i >= 0) return p.slice(i + 3);
-  for (const top of ["144格/", "格局/", "十四主星/", "書目/"]) { const j = p.indexOf(top); if (j >= 0) return p.slice(j); }
+  for (const top of ["144格/", "格局/", "十四主星/", "書目/", "四化/", "四化日記/"]) { const j = p.indexOf(top); if (j >= 0) return p.slice(j); }
   return p.split("/").pop();
 }
 
 const api = { BR, PAL, ORDER, SHORT, TABLES, CELLS, CELL, PATS, PK, BRIDGES, PARTNER, QUIET, SIHUA, STARS, BOOKS, DIV, EDIT, STATUS,
   mod, pad, cellId, twinOf, tname, cname, pfile, shortName, label, PATH,
+  HUA, STEMS, HUA_LIST, HUA_NAMES, HUA_TXT, HUA_BOOK, AUX, starShort, auxPartnerAt, auxPositions, relOf, huaPlaces, huaPairs,
+  diaryNote, setDiaryStem, setDiaryDate,
   cellNote, tableNote, patNote, starNote, allNotes,
   getFront, setFront, getSection, setSection, sectionsOf, mergeNote, makeZip, readZip, normalizeImportPath };
 if (typeof module !== "undefined" && module.exports) module.exports = api; else root.ZW = api;
@@ -1046,7 +1268,7 @@ if (typeof module !== "undefined" && module.exports) module.exports = api; else 
 /* 紫微研習包介面：看盤、寫筆記、進度、練習、備份。資料與範本來自 core.js（window.ZW）。 */
 "use strict";
 const Z = window.ZW;
-const { BR, PAL, CELL, CELLS, PK, PATS, PARTNER, QUIET, DIV, TABLES, STARS, SIHUA, ORDER, BRIDGES } = Z;
+const { BR, PAL, CELL, CELLS, PK, PATS, PARTNER, QUIET, DIV, TABLES, STARS, SIHUA, ORDER, BRIDGES, HUA, STEMS, HUA_LIST, HUA_TXT, HUA_BOOK, AUX } = Z;
 const CFG = Object.assign({
   notesDir: "筆記",
   chartTool: "萬用命盤產生器.html",
@@ -1137,11 +1359,12 @@ async function persist(path, text) {
 }
 let chain = Promise.resolve();
 const queue = fn => (chain = chain.then(fn, fn));
-function saveNote(path, { sections = {}, status } = {}) {
+function saveNote(path, { sections = {}, status, fn } = {}) {
   return queue(async () => {
     let base = S.mode === "folder" ? await readFile(path) : S.notes.get(path);   // 先讀最新檔案，保留 Obsidian 那邊的修改
-    if (base == null) base = tpl().get(path);
-    let t = base;
+    if (base == null) base = S.notes.get(path) ?? tpl().get(path);
+    if (base == null) return;
+    let t = fn ? fn(base) : base;
     for (const [n, v] of Object.entries(sections)) t = Z.setSection(t, n, v);
     if (status) t = Z.setFront(t, "狀態", status);
     try { await persist(path, t); S.lastSave = new Date(); S.saveErr = ""; }
@@ -1252,8 +1475,8 @@ function ask(title, html, buttons) {   // buttons: [[文字, 0=主要/1=次要]]
 
 /* ───────── 筆記編輯器 ───────── */
 let edSeq = 0;
-function editorHTML(path, title) {
-  const md = noteText(path), secs = Z.sectionsOf(md), isCell = Z.getFront(md, "類型") === "格";
+function editorHTML(path, title, only) {   // only：只顯示這些段落
+  const md = noteText(path), secs = Z.sectionsOf(md).filter(([n]) => !only || only.includes(n)), isCell = Z.getFront(md, "類型") === "格";
   const st = Z.getFront(md, "狀態") || "未讀", ro = !editable(), n = ++edSeq;
   return `<section class="notes" data-path="${esc(path)}">
     <div class="notes-head"><h2>${esc(title)}</h2>
@@ -1323,7 +1546,7 @@ function openDrawer(path, title) {
 }
 
 /* ───────── 路由 ───────── */
-const VIEWS = ["home", "study", "overview", "patterns", "stars", "quiz", "books", "backup", "help"];
+const VIEWS = ["home", "study", "overview", "patterns", "stars", "sihua", "diary", "quiz", "books", "backup", "help"];
 let cur = { t: 1, m: 0 }, fCls = "all", fKind = "all";
 function view() { const h = location.hash.slice(1); if (/^g\d{4}$/.test(h)) return "study"; return VIEWS.includes(h) ? h : "home"; }
 function route() {
@@ -1342,6 +1565,8 @@ function rerender() {
   if (v === "overview") renderOverview();
   if (v === "patterns") renderPatterns();
   if (v === "stars") renderStars();
+  if (v === "sihua") renderSihua();
+  if (v === "diary") renderDiary();
   if (v === "quiz") renderQuiz();
   if (v === "backup") renderBackup();
 }
@@ -1353,6 +1578,7 @@ document.addEventListener("click", e => {
   const g = e.target.closest("[data-go]"); if (g) { e.preventDefault(); goId(g.dataset.go); }
   const n = e.target.closest("[data-note]"); if (n) openDrawer(n.dataset.note, n.dataset.title);
   const a = e.target.closest("[data-act]"); if (a) ACT[a.dataset.act]?.();
+  const h = e.target.closest("[data-hgo]"); if (h) { huaSel = h.dataset.hgo; huaMode = "nature"; if (view() === "sihua") renderSihua(); else location.hash = "sihua"; }
 });
 const ACT = { chooseFolder, reconnect, useBrowser, exportZip, importZip: () => $("#inZip").click(), importDir: () => $("#inDir").click(),
   fill: async () => { const miss = [...tpl().keys()].filter(p => !S.notes.has(p)); const n = await fillMissing(miss); toast(n ? `補上 ${n} 則筆記` : "筆記都在，不用補"); refresh(); } };
@@ -1404,6 +1630,7 @@ function renderHome() {
         <li>在「逐格研讀」看盤面、格局、鏡像格，下面直接寫筆記，會自動存檔。</li>
         <li>讀完把狀態改成「已完成」，這裡會自動帶到下一格。</li>
         <li>每讀完一張表，到「練習」做幾題，答錯的題目之後會再出現。</li>
+        <li>到「四化學習」熟記十干四化，每天到「四化日記」記下當天的事。</li>
         <li>常到「筆記與備份」看筆記存在哪裡，記得備份。</li>
       </ol>
       <p class="note-src" style="margin-top:14px">第一次用？先看<a href="#help">使用說明</a>。喜歡手寫？<a href="紫微144格練習簿.pdf" download>下載 PDF 練習簿</a>（A4，每格一頁，附自我測驗），印出來搭配實體書讀。</p>
@@ -1558,6 +1785,220 @@ function renderStars() {
   }).join("");
 }
 
+/* ───────── 四化學習 ───────── */
+const HCLS = ["hl", "hq", "hk", "hj"];   // 祿權科忌
+const badge = i => `<b class="hb ${HCLS[i]}" title="化${HUA[i]}">${HUA[i]}</b>`;
+const REL_CLS = { "同宮": "r0", "三合": "r1", "對宮": "r2", "暗合": "r3", "暗合・鄰宮": "r3", "鄰宮": "r4" };
+let huaMode = "nature", huaSel = "甲0", huaG = "甲", huaT = 1;
+const huaAux = { 左右: { who: "左輔", b: null }, 昌曲: { who: "文昌", b: null } };
+const auxArg = () => Object.fromEntries(Object.values(huaAux).filter(a => a.b != null).map(a => [a.who, a.b]));
+
+function renderSihua() {
+  const modes = [["nature", "四化星性"], ["table", "四化入表"]];
+  $("#v-sihua").innerHTML = `<div class="filters"><div class="chips" role="group" aria-label="學習方式">${modes.map(([k, t]) => `<button class="chip" data-hm="${k}" aria-pressed="${huaMode === k}">${t}</button>`).join("")}</div>
+    <span class="note-src">${huaMode === "nature" ? "先熟記十干四化：點任一化，看星性、寫自己的筆記。" : "把四化放進十二表，看彼此同宮、三合、對宮、暗合。"}</span></div>`
+    + (huaMode === "nature" ? huaNatureHTML() : huaTableHTML());
+}
+
+function huaNatureHTML() {
+  const g = huaSel[0], i = +huaSel.slice(1), star = SIHUA[g][i], name = star + "化" + HUA[i];
+  const same = HUA_LIST.filter(h => h.name === name).map(h => h.g + "干");
+  const others = HUA_LIST.filter(h => h.star === star && h.g + h.i !== huaSel);
+  const rows = STEMS.map(x => `<tr><th scope="row">${x}</th>${SIHUA[x].map((s, k) => `<td><button class="hcell" data-hs="${x}${k}" aria-pressed="${x + k === huaSel}">${s}</button></td>`).join("")}</tr>`).join("");
+  const book = HUA_BOOK[name];
+  return `<div class="study">
+    <div><table class="hz"><thead><tr><th scope="col">天干</th>${[...HUA].map((h, k) => `<th scope="col">${badge(k)} 化${h}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table>
+      <p class="note-src">四化表依萬用命盤產生器所用之表（戊：右弼化科；庚：陽武同陰；壬：左輔化科），各派略有出入。</p></div>
+    <article class="card">
+      <div class="note-src">${same.join("、")}・化${HUA[i]}</div>
+      <h2>${name}</h2>
+      <h3>通行說法</h3><p class="htxt">${HUA_TXT[name]}</p>
+      <h3>《紫微四化星》要點</h3>${book ? `<p class="htxt">${esc(book)}</p>` : `<p class="empty">待補。讀書時用自己的話寫進下方「我的星性筆記」，並註明頁碼。</p>`}
+      <h3>${star}</h3>${STARS[star] ? `<p style="margin:0;font-size:14px">${STARS[star].kw}</p>` : `<p style="margin:0;font-size:14px">輔星：左輔、右弼由出生月安，文昌、文曲由出生時辰安。${star}與${AUX[star]}成對，以丑未為軸左右對稱。</p>`}
+      <h3>${star}的其他四化</h3><div class="links">${others.map(h => `<button class="chip" data-hs="${h.g}${h.i}">${h.g}干化${HUA[h.i]}</button>`).join("") || `<span class="empty">無</span>`}</div>
+    </article></div>
+    ${editorHTML(Z.PATH.myHua, `我的星性筆記：${name}`, [name])}`;
+}
+
+function huaTableHTML() {
+  const aux = auxArg(), at = Z.auxPositions(aux), places = Z.huaPlaces(huaT, huaG, aux), P = TABLES[huaT - 1];
+  const pairs = Z.huaPairs(huaG, aux), star = i => places[i].star;
+  const auxRow = key => {
+    const a = huaAux[key], p = a.b == null ? null : Z.auxPartnerAt(a.b);
+    return `<label>${key === "左右" ? "左輔右弼" : "文昌文曲"}</label><div><div class="chips">
+      <button class="chip" data-aw="${key}" title="改成指定另一顆">指定${a.who} ⇄</button>
+      <button class="chip" data-ab="${key}:" aria-pressed="${a.b == null}">不安</button>
+      ${[...BR].map((b, k) => `<button class="chip" data-ab="${key}:${k}" aria-pressed="${a.b === k}">${b}</button>`).join("")}</div>
+      ${a.b != null ? `<div class="note-src">${a.who}在${BR[a.b]} → ${AUX[a.who]}在${BR[p]}${a.b === p ? "（只有丑、未會同宮）" : ""}</div>` : ""}</div>`;
+  };
+  const hz = s => { const p = places.find(x => x.star === s); return p ? badge(p.i) : ""; };
+  let h = "";
+  for (let r = 0; r < 4; r++) for (let k = 0; k < 4; k++) {
+    const b = DIV[r][k];
+    if (b === null) {
+      if (r === 1 && k === 1) h += `<div class="center"><div class="no">表${huaT}・紫微在${BR[huaT - 1]}</div><div class="big">${huaG}干四化</div>
+        ${places.map(p => `<div class="sub">${badge(p.i)} ${p.star}　${p.b == null ? "未安，請指定位置" : BR[p.b] + "宮"}</div>`).join("")}</div>`;
+      continue;
+    }
+    const auxHere = Object.keys(at).filter(s => at[s] === b);
+    const st = (P[b].length ? P[b].map(s => `<span>${s}${hz(s)}</span>`).join("") : `<span class="borrow">（${starsTxt(P[(b + 6) % 12])}）</span>`)
+      + auxHere.map(s => `<span class="aux">${s}${hz(s)}</span>`).join("");
+    h += `<div class="pal ${places.some(p => p.b === b) ? "hon" : ""}" aria-label="${BR[b]}宮 ${[...P[b], ...auxHere].join(" ") || "空宮"}"><div class="stars">${st}</div><span class="br">${BR[b]}</span></div>`;
+  }
+  const co = p => [...P[p.b], ...Object.keys(at).filter(s => at[s] === p.b)].filter(s => s !== p.star);
+  const fall = places.map(p => `<div class="hrow">${badge(p.i)} <b>${p.name}</b>　${p.b == null ? `<span class="empty">輔星未安</span>` : `${BR[p.b]}宮${co(p).length ? "，同宮 " + co(p).join("・") : ""}`}</div>`).join("");
+  const rel = (x, k) => x.rels ? `<span class="rel ${REL_CLS[x.rels[k]] || ""}">${x.rels[k]}</span>` : `<span class="empty">需先安輔星</span>`;
+  const now = pairs.map(x => `<div class="hrow">${badge(x.i)}${star(x.i)}—${badge(x.j)}${star(x.j)}：${rel(x, huaT - 1)}</div>`).join("");
+  const sum = x => { if (!x.rels) return "需安輔星"; const c = {}; x.rels.forEach(r => c[r] = (c[r] || 0) + 1); const ks = Object.keys(c); return ks.length === 1 ? `<b>十二表恆為${ks[0]}</b>` : ks.map(r => r + c[r]).join("・"); };
+  return `<div class="picker">
+      <label>天干</label><div class="chips">${STEMS.map(g => `<button class="chip" data-hg="${g}" aria-pressed="${g === huaG}">${g}<span class="s">${SIHUA[g].map(Z.starShort).join("")}</span></button>`).join("")}</div>
+      <label>表號</label><div class="chips">${TABLES.map((_, k) => `<button class="chip" data-ht="${k + 1}" aria-pressed="${huaT === k + 1}">表${k + 1}<span class="s">紫${BR[k]}</span></button>`).join("")}</div>
+      ${auxRow("左右")}${auxRow("昌曲")}
+    </div>
+    <div class="study">
+      <div><div class="chart hchart">${h}</div>
+        <div class="legend">${[0, 1, 2, 3].map(i => `<span>${badge(i)} 化${HUA[i]}</span>`).join("")}<span><i style="background:var(--indigo-soft)"></i>四化所在宮</span><span style="color:var(--indigo)">藍字為輔星</span></div></div>
+      <article class="card"><h2>表${huaT}・${huaG}干</h2>
+        <h3>四化落宮</h3>${fall}
+        <h3>四化之間</h3>${now}
+        <p class="note-src">暗合即地支六合（子丑、寅亥、卯戌、辰酉、巳申、午未）。輔星位置由出生月、時辰決定，這裡由你指定；不安也可以，只看主星的四化。</p></article>
+    </div>
+    <h3 class="sec">十二表通觀：${huaG}干四化兩兩之間的關係</h3>
+    <div class="ovw"><table class="hm">
+      <thead><tr><th scope="col">表</th>${pairs.map(x => `<th scope="col">${badge(x.i)}${badge(x.j)}<small>${star(x.i)}・${star(x.j)}</small></th>`).join("")}</tr></thead>
+      <tbody>${TABLES.map((_, k) => `<tr class="${k + 1 === huaT ? "cur" : ""}"><th scope="row"><button class="mini" data-ht="${k + 1}">表${k + 1}</button></th>${pairs.map(x => x.rels ? `<td class="${REL_CLS[x.rels[k]] || ""}">${x.rels[k]}</td>` : `<td class="empty">—</td>`).join("")}</tr>`).join("")}</tbody>
+      <tfoot><tr><th scope="row">合計</th>${pairs.map(x => `<td>${sum(x)}</td>`).join("")}</tr></tfoot>
+    </table></div>
+    <div class="note-src prose"><p><b>為什麼有些關係十二表都一樣？</b>紫微星系（紫微、天機、太陽、武曲、天同、廉貞）和天府星系（天府、太陰、貪狼、巨門、天相、天梁、七殺、破軍）各自整組移動。同一星系的兩星<b>距離</b>固定，所以同宮、三合、對宮十二表都一樣；不同星系的兩星位置<b>和</b>固定（以某條軸互為鏡射），所以暗合要嘛十二表都成立、要嘛都不成立，其他關係則隨表號改變。</p>
+      <p>輔星不隨表號移動。左輔與右弼、文昌與文曲的位置和恆為 2，以丑未為軸對稱，所以只有在丑、未會同宮。</p></div>`;
+}
+$("#v-sihua").addEventListener("click", e => {
+  const q = s => e.target.closest(s);
+  const m = q("[data-hm]"), s = q("[data-hs]"), g = q("[data-hg]"), t = q("[data-ht]"), w = q("[data-aw]"), ab = q("[data-ab]");
+  if (m) huaMode = m.dataset.hm;
+  else if (s) huaSel = s.dataset.hs;
+  else if (g) huaG = g.dataset.hg;
+  else if (t) huaT = +t.dataset.ht;
+  else if (w) { const a = huaAux[w.dataset.aw]; a.who = AUX[a.who]; if (a.b != null) a.b = Z.auxPartnerAt(a.b); }   // 換一顆指定，盤面不變
+  else if (ab) { const [k, v] = ab.dataset.ab.split(":"); huaAux[k].b = v === "" ? null : +v; }
+  else return;
+  flush(); renderSihua();
+});
+
+/* ───────── 四化日記 ───────── */
+let diarySel = null, diaryFilter = "all", newStem = null, newDate = null;
+const DIARY_RE = /^四化日記\/\d{4}-\d{2}-\d{2}\.md$/;
+const diaries = () => [...S.notes.keys()].filter(p => DIARY_RE.test(p)).sort().reverse();
+async function noteExists(p) {
+  if (S.notes.has(p)) return true;
+  return S.mode === "folder" && S.perm ? (await readFile(p)) != null : false;   // Obsidian 剛建的檔也算
+}
+async function removeNote(p) {
+  if (S.mode === "folder") {
+    const parts = p.split("/"); let d = S.dir;
+    for (const x of parts.slice(0, -1)) d = await d.getDirectoryHandle(x);
+    await d.removeEntry(parts[parts.length - 1]);
+    DB.del("mirror", p).catch(() => {});
+  } else await DB.del("notes", p);
+  S.notes.delete(p);
+}
+function renderDiary() {
+  const list = diaries(), stemOf = p => Z.getFront(S.notes.get(p), "天干");
+  if (diarySel && !S.notes.has(diarySel)) diarySel = null;
+  if (!diarySel && list.length) diarySel = list[0];
+  newDate ||= ymd(new Date());
+  const shown = list.filter(p => diaryFilter === "all" || stemOf(p) === diaryFilter);
+  const excerpt = p => Z.getSection(S.notes.get(p), "今日事件").split("\n")[0].slice(0, 40);
+  const left = `<article class="card"><h2>寫一篇</h2>
+      <div class="field"><label for="dDate">日期</label><span class="hint">預設今天，可以改成之前的日子補寫。</span><input type="date" id="dDate" value="${newDate}"></div>
+      <div class="field"><label>當天天干</label><span class="hint">請查萬年曆的日干支，例如「丁亥日」就選丁。</span>
+        <div class="chips">${STEMS.map(g => `<button class="chip" data-dg="${g}" aria-pressed="${g === newStem}">${g}</button>`).join("")}</div>
+        ${newStem ? `<div class="note-src" style="margin-top:6px">${newStem}干：${SIHUA[newStem].map((s, i) => s + "化" + HUA[i]).join("、")}</div>` : ""}</div>
+      <div class="row" style="margin-top:14px"><button class="btn" data-dnew>開始寫</button></div></article>
+    <article class="card"><h2>我的日記（${list.length} 篇）</h2>
+      <div class="chips" role="group" aria-label="依天干篩選"><button class="chip" data-df="all" aria-pressed="${diaryFilter === "all"}">全部</button>${STEMS.map(g => `<button class="chip" data-df="${g}" aria-pressed="${diaryFilter === g}">${g}日</button>`).join("")}</div>
+      <div class="dlist">${shown.map(p => `<button class="ditem" data-dopen="${esc(p)}" aria-pressed="${p === diarySel}"><b>${esc(Z.getFront(S.notes.get(p), "日期"))}</b><span>${esc(stemOf(p))}日</span><small>${esc(excerpt(p))}</small></button>`).join("") || `<p class="empty">${list.length ? "這個天干還沒有日記。" : "還沒有日記，從左上角開始寫第一篇。"}</p>`}</div></article>`;
+  const right = diarySel ? diaryPanel(diarySel) : `<article class="card"><h2>四化日記</h2>
+    <p>每天觀察當日天干的四化，對照自己當天的念頭與事件。寫久了，會慢慢分辨哪些是星曜的特性、哪些是自己的投射。</p>
+    <ol class="steps"><li>選日期，查萬年曆選當天的天干。</li><li>按「開始寫」，記下今天發生的事。</li><li>對照四化：哪件事像化祿、化權、化科、化忌？</li><li>過幾天回頭看，同一個天干的日子有沒有共同的味道。</li></ol></article>`;
+  $("#v-diary").innerHTML = `<div class="study diary"><div class="dleft">${left}</div><div>${right}</div></div>`;
+}
+function diaryPanel(p) {
+  const md = S.notes.get(p), d = Z.getFront(md, "日期"), g = Z.getFront(md, "天干");
+  return `<article class="card">
+    <div class="notes-head"><h2>${esc(d)}　${SIHUA[g] ? g + "日" : ""}</h2>
+      <div class="row"><input type="date" id="dMove" value="${esc(d)}" aria-label="改成哪一天"><button class="mini" data-dmove>改日期</button><button class="mini" data-ddel>刪除</button></div></div>
+    <h3>當天天干</h3><div class="chips">${STEMS.map(x => `<button class="chip" data-dchg="${x}" aria-pressed="${x === g}">${x}</button>`).join("")}</div>
+    <h3>今日四化</h3>${SIHUA[g] ? SIHUA[g].map((s, i) => `<div class="hrow">${badge(i)} <button class="linkbtn" data-hgo="${g}${i}">${s}化${HUA[i]}</button>　<span class="note-src">${HUA_TXT[s + "化" + HUA[i]]}</span></div>`).join("") : `<p class="empty">還沒選天干</p>`}
+  </article>
+  ${editorHTML(p, "日記")}`;
+}
+const okDate = d => /^\d{4}-\d{2}-\d{2}$/.test(d || "");
+async function newDiary() {
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  const d = newDate = $("#dDate").value;
+  if (!okDate(d)) { toast("請先選日期"); return; }
+  if (!newStem) { toast("請先選當天的天干（查萬年曆的日干支）"); return; }
+  const p = Z.PATH.diary(d);
+  if (await noteExists(p)) {
+    if (!S.notes.has(p)) S.notes.set(p, await readFile(p));
+    const g = Z.getFront(S.notes.get(p), "天干");
+    const r = await ask("這一天已經寫過了", `${esc(d)}${g ? `（${esc(g)}日）` : ""}已經有一篇四化日記，不會再建立第二篇。要開啟那篇，還是換個日期？`, [["開啟那篇", 0], ["換個日期", 1]]);
+    if (r === 0) { flush(); diarySel = p; renderDiary(); } else $("#dDate")?.focus();
+    return;
+  }
+  flush();
+  let err = "";
+  await queue(async () => { try { await persist(p, Z.diaryNote(d, newStem)); } catch (e) { err = e.message || String(e); } });
+  if (err) { toast("沒有存到：" + err); return; }
+  diarySel = p; newStem = null; diaryFilter = "all"; renderDiary(); toast(`已建立 ${d} 的四化日記`);
+  $("#v-diary .notes textarea")?.focus();
+}
+async function changeStem(g) {
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  flush(); await saveNote(diarySel, { fn: md => Z.setDiaryStem(md, g) }); renderDiary();
+}
+async function moveDiary(to) {
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  const from = diarySel;
+  if (!okDate(to) || to === Z.getFront(S.notes.get(from), "日期")) return;
+  const np = Z.PATH.diary(to);
+  if (await noteExists(np)) { await ask("那一天已經有日記", `${esc(to)} 已經寫過一篇，不能覆蓋。可以先開啟那篇，把這篇的內容貼過去。`, [["知道了", 1]]); return; }
+  flush();
+  let err = "";
+  await queue(async () => {
+    try {
+      const md = (S.mode === "folder" ? await readFile(from) : null) ?? S.notes.get(from);
+      await persist(np, Z.setDiaryDate(md, to)); await removeNote(from);
+    } catch (e) { err = e.message || String(e); }
+  });
+  if (err) { toast("沒有改成：" + err); return; }
+  diarySel = np; renderDiary(); toast(`已改到 ${to}`);
+}
+async function delDiary() {
+  if (!editable()) { toast("請先重新連接筆記資料夾"); return; }
+  const p = diarySel, d = Z.getFront(S.notes.get(p), "日期");
+  const r = await ask("刪除這篇日記？", `${esc(d)} 的四化日記會被刪除${S.mode === "folder" ? "，資料夾裡的檔案也會一起刪掉" : ""}，無法復原。`, [["刪除", 0], ["取消", 1]]);
+  if (r !== 0) return;
+  flush();
+  let err = "";
+  await queue(async () => { try { await removeNote(p); } catch (e) { err = e.message || String(e); } });
+  if (err) { toast("沒有刪掉：" + err); return; }
+  diarySel = null; renderDiary(); toast("已刪除");
+}
+$("#v-diary").addEventListener("click", e => {
+  const q = s => e.target.closest(s);
+  const dg = q("[data-dg]"), df = q("[data-df]"), op = q("[data-dopen]"), chg = q("[data-dchg]");
+  if (dg) { newStem = dg.dataset.dg; newDate = $("#dDate").value; renderDiary(); }
+  else if (df) { diaryFilter = df.dataset.df; renderDiary(); }
+  else if (op) { flush(); diarySel = op.dataset.dopen; renderDiary(); }
+  else if (chg) changeStem(chg.dataset.dchg);
+  else if (q("[data-dnew]")) newDiary();
+  else if (q("[data-dmove]")) moveDiary($("#dMove").value);
+  else if (q("[data-ddel]")) delDiary();
+});
+$("#v-diary").addEventListener("change", e => { if (e.target.id === "dDate") newDate = e.target.value; });
+
 /* ───────── 練習 ───────── */
 const comboTxt = c => c.stars.length ? starsTxt(c.stars) : "命無正曜";
 const pad4 = (ans, pool) => shuffle([ans, ...sample([...new Set(pool)].filter(x => x !== ans), 3)]);
@@ -1583,6 +2024,15 @@ const QTYPES = {
   twin: { name: "鏡像格", make(pool) { const c = rand(pool), tw = Z.twinOf(c), ans = label(tw);
     const near = [label(CELL[id2(c.t, (c.m + 6) % 12)]), label(CELL[id2((c.t + 5) % 12 + 1, c.m)]), ...sample(CELLS, 6).map(label)];
     return { q: `${label(c)} 的鏡像格是哪一格？`, ans, opts: pad4(ans, near), cell: c.id, ex: `鏡像格是表號+6、命宮+6：${ans}。兩格主星佈局完全相同，只差地支。` }; } },
+  huaGan: { name: "十干四化", make() { const g = rand(STEMS), f = x => SIHUA[x].map(Z.starShort).join(""), ans = f(g), mix = shuffle(SIHUA[g]).map(Z.starShort).join("");
+    return { q: `${g}干的四化（依祿、權、科、忌）是？`, ans, opts: pad4(ans, STEMS.filter(x => x !== g).map(f).concat(mix !== ans ? [mix] : [])), hua: g + "0",
+      ex: `${g}干：${SIHUA[g].map((s, i) => s + "化" + HUA[i]).join("、")}。` }; } },
+  huaStem: { name: "化星屬哪干", make() { const h = rand(HUA_LIST), gs = HUA_LIST.filter(x => x.name === h.name).map(x => x.g), ans = h.g + "干";
+    return { q: `${h.name}是哪一干的四化？`, ans, opts: pad4(ans, STEMS.filter(g => !gs.includes(g)).map(g => g + "干")), hua: h.g + h.i,
+      ex: `${h.name}：${gs.map(g => g + "干").join("、")}。${HUA_TXT[h.name]}` }; } },
+  huaStar: { name: "某干化某星", make() { const h = rand(HUA_LIST), ans = h.star;
+    return { q: `${h.g}干化${HUA[h.i]}是哪顆星？`, ans, opts: pad4(ans, HUA_LIST.map(x => x.star)), hua: h.g + h.i,
+      ex: `${h.g}干：${SIHUA[h.g].map((s, i) => s + "化" + HUA[i]).join("、")}。` }; } },
   anhe: { name: "暗合宮", make() { const m = Math.floor(Math.random() * 12), ans = BR[Z.mod(1 - m)] + "宮";
     return { q: `命宮在${BR[m]}，命宮的暗合宮在哪一支？`, ans, opts: pad4(ans, [...BR].map(x => x + "宮")), ex: "暗合即地支六合：子丑、寅亥、卯戌、辰酉、巳申、午未。" }; } },
 };
@@ -1625,7 +2075,7 @@ $("#v-quiz").addEventListener("click", e => {
     else if (!wrong.some(w => w.q === key)) { const { done, again, ...plain } = Q; wrong.push(plain); }
     saveWrong();
     $("#qex").innerHTML = `<div class="explain"><b>${ok ? "答對了！" : "正確答案：" + esc(Q.ans)}</b>　${esc(Q.ex)}</div>
-      <div class="row" style="margin-top:12px"><button class="btn" data-next>下一題</button>${Q.cell ? `<button class="btn ghost" data-go="${Q.cell}">去看這一格</button>` : ""}</div>`;
+      <div class="row" style="margin-top:12px"><button class="btn" data-next>下一題</button>${Q.cell ? `<button class="btn ghost" data-go="${Q.cell}">去看這一格</button>` : ""}${Q.hua ? `<button class="btn ghost" data-hgo="${Q.hua}">看這一化的星性</button>` : ""}</div>`;
     $("#qex [data-next]").focus();
   }
 });
@@ -1642,7 +2092,8 @@ function renderBooks() {
     <li><b>鏡像對讀</b>：讀完表1跳表7，依序完成 1↔7、2↔8……六對，特別比較只在一邊出現的地支型格局（明珠出海、月朗天門、極向離明等）。</li>
     <li><b>格局總表</b>：每讀完一張表，回格局總表把 A 類格局逐條核對古訣；B 類到萬用命盤產生器第 4 圖層疊加輔星確認。</li>
     <li><b>練習</b>：每讀完一張表，到「練習」把範圍設成那張表，做到全對。</li>
-    <li><b>疊加四化與宮位</b>：《紫微四化星》逐干對讀，《談星際關係》對十二宮關係。</li>
+    <li><b>四化</b>：在「四化學習」熟記十干四化與星性，與《紫微四化星》逐干對讀，再看四化入十二表的分布；每天寫「四化日記」。</li>
+    <li><b>疊加宮位</b>：《談星際關係》對十二宮關係。</li>
   </ol>
   <h2>PDF 練習簿</h2>
   <p>喜歡手寫的話，可以<a href="紫微144格練習簿.pdf" download>下載 PDF 練習簿</a>印出來：A4 共 190 頁，包含十四主星、144 格各一頁（盤面、格局古訣、手寫欄）、每張表的默寫測驗（答案倒印在頁尾），以及附頁碼的格局總表。</p>
@@ -1690,6 +2141,8 @@ function renderHelp() {
     <li><b>寫筆記</b>：盤面下方直接打字，會自動存檔。</li>
     <li><b>看進度</b>：「開始」頁會顯示讀到哪裡，並帶你讀下一格。</li>
     <li><b>練習</b>：隨機出題，答錯的題目之後會再出現。</li>
+    <li><b>四化學習</b>：「四化星性」熟記十干四化並寫星性筆記；「四化入表」看四化在十二表中同宮、三合、對宮、暗合的分布，左輔右弼、文昌文曲指定一顆，另一顆自動安上。</li>
+    <li><b>四化日記</b>：選日期、查萬年曆選當天天干，帶出當天四化寫日記。同一天已經寫過會提醒，不會覆蓋；可以補寫之前的日子。</li>
   </ul>
   <h2>第一次使用，請先做這一步</h2>
   <ol>${ONLINE
