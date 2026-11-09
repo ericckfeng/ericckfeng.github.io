@@ -574,6 +574,7 @@ const POT = {
     core: "以口為樞紐：溝通、質疑、發掘盲點，常在框架外看見邊陲議題。用得好見微知著，用不好就搬弄是非、口舌官非、鑽牛角尖。",
     tMind: "在無法發言的場合易抑鬱不平；學會面對當下，不執著非主流議題，管住口舌。", tBody: "封閉環境易生猜忌；置身多元開放、資訊透明的空間，以專業論述取代私下抱怨。",
     jobs: "律師、外交談判、新聞傳播、學術評論、外語翻譯" },
+  // 天梁小檔案六項已對照原書 p.143
   "天梁": { alias: "蔭星・清高老宿", mind: "蔭", body: "事半功倍", lucky: "淺藍色", fix: "淺咖啡色", kMind: "煩惱", kBody: "良好的物質生活享受",
     core: "清高正直、不隨波逐流，是日月之間的仲介者。天生遇難呈祥，得前輩祖上之蔭也樂於庇護弱小；沉溺名利就易招風波是非。",
     tMind: "心思深沉易自尋煩惱；建立「以他非為己非」的超然自省，不涉瑣碎是非。", tBody: "豐厚饋贈取之有度，把紅利回饋公益；先為他人遮蔭，自身災劫自消。",
@@ -690,8 +691,7 @@ const SHA = [
 
 // 兩份研讀筆記說法不同之處：以 POT（《開發潛能》研讀筆記）為主，這裡列另一份的說法，請對照原書
 const POT_ALT = {
-  // 精神潛能「蔭」、物質潛能「事半功倍」已由原書 p.179 確認，以 POT 為準；顏色與剋星尚未對照原書
-  "天梁": { src: "《紫微斗數與四化星》及潛能應用研讀指南", lucky: "深褐色或墨綠色", fix: "金黃色", kMind: "自私自利", kBody: "缺乏敬重道德的環境" },
+  // 目前沒有。天梁曾列研讀指南的不同說法，已依原書 p.143「天梁星小檔案」確認 POT 正確而移除
 };
 
 const api = { HUA_SRC, HUA_INTRO, HUA_DIMS, HUA_DIM, HUA_STAR, HUA_BOOK, HUA_AUX, TIANLUO, OVERLAY, HUA_END,
@@ -2610,7 +2610,7 @@ function renderPotential() {
   <h3 class="sec">諸星潛能一覽（十四主星＋祿存、天馬）</h3>
   <div class="ovw"><table class="hm dims pt2"><thead><tr><th scope="col">星</th>${POT_KV.map(([k]) => `<th scope="col">${k}</th>`).join("")}</tr></thead>
     <tbody>${POT_STARS.map(s => `<tr><th scope="row">${s}<small>${P[s].alias}</small></th>${POT_KV.map(([, f]) => `<td>${P[s][f]}${potAlt(s, f)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
-  <p class="note-src">「另一份筆記」：《紫微斗數與四化星》研讀指南的說法和《開發潛能》研讀筆記不同（目前只有天梁的顏色與剋星；精神潛能「蔭」、物質潛能「事半功倍」已由原書確認），請對照原書。</p>
+  ${Object.keys(BOOK.POT_ALT).length ? `<p class="note-src">「另一份筆記」：其他研讀筆記的說法和《開發潛能》研讀筆記不同（${Object.keys(BOOK.POT_ALT).join("、")}），請對照原書。</p>` : ""}
   <h3 class="sec">雙星對照：精神、物質潛能相近還是相反？</h3>
   <div class="picker"><label>第一顆</label>${pick("a", potA)}<label>第二顆</label>${pick("b", potB)}</div>
   <div class="cards">${[potA, potB].map(s => `<article class="card star"><div class="meta">${P[s].alias}</div><h2>${s}</h2>${potKV(s)}${potMore(s)}</article>`).join("")}</div>
